@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Andrew Fleck</title>
+    <link>https://AWLFleck.github.io/tags/hugo/</link>
+    <description>Recent content in Hugo on Andrew Fleck</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 04 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://AWLFleck.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>External Page: Hugo Coder Wiki</title>
+      <link>https://AWLFleck.github.io/posts/hugo-coder-wiki/</link>
+      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://AWLFleck.github.io/posts/hugo-coder-wiki/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
