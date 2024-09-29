@@ -51,7 +51,5 @@
     <loc>http://localhost:1313/projects/</loc>
   </url><url>
     <loc>http://localhost:1313/series/</loc>
-  </url><url>
-    <loc>http://localhost:1313/test_page/</loc>
   </url>
 </urlset>
