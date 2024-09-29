@@ -210,7 +210,6 @@ $$</p>
 <p>Test 2:</p>
 <p>$\frac{x}{y}$</p>
 <p>Testing comments&hellip;</p>
-<p>{{ partial &ldquo;posts/giscus.html&rdquo; . }}</p>
       </div>
 
 
@@ -221,21 +220,35 @@ $$</p>
         
         
         
-        <script src="https://giscus.app/client.js"
-            data-repo="AWLFleck/Discus_comments"
-            data-repo-id="R_kgDOM4mJ-Q"
-            data-category="Announcements"
-            data-category-id="DIC_kwDOM4mJ-c4Ci4fp"
-            data-mapping="pathname"
-            data-strict="0"
-            data-reactions-enabled="0"
-            data-emit-metadata="0"
-            data-input-position="top"
-            data-theme="preferred_color_scheme"
-            data-lang="en"
-            crossorigin="anonymous"
-            async>
-        </script>
+        <div class="comments">
+    <script>
+  
+    let getTheme = window.localStorage && window.localStorage.getItem("colorscheme");
+  
+    getTheme = getTheme == null ? 'preferred_color_scheme' : getTheme;
+    
+    let s = document.createElement('script');
+    s.src = 'https://giscus.app/client.js';
+    s.setAttribute('data-repo', 'AWLFleck\/Discus_comments');
+    s.setAttribute('data-repo-id', 'R_kgDOM4mJ-Q');
+    s.setAttribute('data-category', 'Announcements');
+    s.setAttribute('data-category-id', 'DIC_kwDOM4mJ-c4Ci4fp');
+    s.setAttribute('data-mapping', 'pathname');
+    s.setAttribute('data-term', '');
+    s.setAttribute('data-strict', '0');
+    s.setAttribute('data-reactions-enabled', '0');
+    s.setAttribute('data-emit-metadata', '0');
+    s.setAttribute('data-input-position', 'top');
+    s.setAttribute('data-theme', getTheme);
+    s.setAttribute('data-lang', 'en');
+    s.setAttribute('data-loading', '');
+    s.setAttribute('crossorigin', 'anonymous');
+    s.setAttribute('async', '');
+    document.querySelector('div.comments').innerHTML = '';
+    document.querySelector('div.comments').appendChild(s);
+  
+    </script>
+    </div>
         
 
         

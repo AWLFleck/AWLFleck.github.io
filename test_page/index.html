@@ -18,6 +18,7 @@
 <meta name="author" content="Andrew Fleck">
 <meta name="description" content="
 giscus
+{{ template &ldquo;_internal/disqus.html&rdquo; . }}
 
 ">
 <meta name="keywords" content="">
@@ -26,12 +27,14 @@ giscus
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Test Tab">
-  <meta name="twitter:description" content=" giscus">
+  <meta name="twitter:description" content=" giscus
+{{ template “_internal/disqus.html” . }}">
 
 <meta property="og:url" content="http://localhost:1313/test_page/">
   <meta property="og:site_name" content="Andrew Fleck">
   <meta property="og:title" content="Test Tab">
-  <meta property="og:description" content=" giscus">
+  <meta property="og:description" content=" giscus
+{{ template “_internal/disqus.html” . }}">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
 
@@ -160,6 +163,7 @@ giscus
 
     <!-- raw HTML omitted -->
 <p>giscus</p>
+<p>{{ template &ldquo;_internal/disqus.html&rdquo; . }}</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
