@@ -2,54 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://awlfleck.github.io/about/</loc>
     <lastmod>2022-10-12T11:53:08-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://awlfleck.github.io/</loc>
     <lastmod>2022-10-12T11:53:08-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/markdown/</loc>
+    <loc>https://awlfleck.github.io/tags/markdown/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/placeholder-text/</loc>
+    <loc>https://awlfleck.github.io/posts/placeholder-text/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://awlfleck.github.io/posts/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://awlfleck.github.io/tags/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/text/</loc>
+    <loc>https://awlfleck.github.io/tags/text/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/math-typesetting/</loc>
+    <loc>https://awlfleck.github.io/posts/math-typesetting/</loc>
     <lastmod>2019-03-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://awlfleck.github.io/categories/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/development/</loc>
+    <loc>https://awlfleck.github.io/tags/development/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/development/</loc>
+    <loc>https://awlfleck.github.io/categories/development/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hugo-coder-wiki/</loc>
+    <loc>https://awlfleck.github.io/posts/hugo-coder-wiki/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
+    <loc>https://awlfleck.github.io/tags/hugo/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/themes/</loc>
+    <loc>https://awlfleck.github.io/tags/themes/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/authors/</loc>
+    <loc>https://awlfleck.github.io/authors/</loc>
   </url><url>
-    <loc>http://localhost:1313/contact/</loc>
+    <loc>https://awlfleck.github.io/contact/</loc>
   </url><url>
-    <loc>http://localhost:1313/projects/</loc>
+    <loc>https://awlfleck.github.io/projects/</loc>
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>https://awlfleck.github.io/series/</loc>
   </url>
 </urlset>
