@@ -2,60 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Andrew Fleck</title>
-    <link>http://localhost:1313/</link>
+    <link>https://awlfleck.github.io/</link>
     <description>Recent content on Andrew Fleck</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 12 Oct 2022 11:53:08 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://awlfleck.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>http://localhost:1313/about/</link>
+      <link>https://awlfleck.github.io/about/</link>
       <pubDate>Wed, 12 Oct 2022 11:53:08 -0400</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;By training, I am an applied mathematician.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1313/AWF_CV_Long_new.pdf&#34; &gt;My Resume&lt;/a&gt; +++fix opening paragraph+++&lt;/p&gt;</description>
+      <guid>https://awlfleck.github.io/about/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;By training, I am an applied mathematician.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://awlfleck.github.io/AWF_CV_Long_new.pdf&#34; &gt;My Resume&lt;/a&gt; +++fix opening paragraph+++&lt;/p&gt;</description>
     </item>
     <item>
       <title>Placeholder Text</title>
-      <link>http://localhost:1313/posts/placeholder-text/</link>
+      <link>https://awlfleck.github.io/posts/placeholder-text/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/placeholder-text/</guid>
+      <guid>https://awlfleck.github.io/posts/placeholder-text/</guid>
       <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Math Typesetting</title>
-      <link>http://localhost:1313/posts/math-typesetting/</link>
+      <link>https://awlfleck.github.io/posts/math-typesetting/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/math-typesetting/</guid>
+      <guid>https://awlfleck.github.io/posts/math-typesetting/</guid>
       <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
     </item>
     <item>
       <title>External Page: Hugo Coder Wiki</title>
-      <link>http://localhost:1313/posts/hugo-coder-wiki/</link>
+      <link>https://awlfleck.github.io/posts/hugo-coder-wiki/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hugo-coder-wiki/</guid>
+      <guid>https://awlfleck.github.io/posts/hugo-coder-wiki/</guid>
       <description></description>
     </item>
     <item>
       <title>Contact</title>
-      <link>http://localhost:1313/contact/</link>
+      <link>https://awlfleck.github.io/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/contact/</guid>
+      <guid>https://awlfleck.github.io/contact/</guid>
       <description>&lt;p&gt;Feel free to message me on LinkedIn alternatively you can email me at:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;mailto:afleck@yorku.ca&#34; &gt;afleck@yorku.ca&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;If all else fails, promise to provide free (Québécois) maple syrup in Midtown Manhattan and I&amp;rsquo;ll be sure to arrive.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Projects</title>
-      <link>http://localhost:1313/projects/</link>
+      <link>https://awlfleck.github.io/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/</guid>
+      <guid>https://awlfleck.github.io/projects/</guid>
       <description>&lt;h3 id=&#34;estimation-and-management-of-stable-distributed-risk&#34;&gt;&#xA;  Estimation and Management of Stable-distributed Risk:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#estimation-and-management-of-stable-distributed-risk&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;*description of major results&amp;hellip;.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/2410.14984&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Risk Aggregation and Allocation in the Presence of Systematic Risk via Stable Laws&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/2410.14985&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stochastic Loss Reserving: Dependence and Estimation&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;fia-return-modeling&#34;&gt;&#xA;  FIA return modeling:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#fia-return-modeling&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;[+++insert 3rd paper+++]&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;ergodicity-economics&#34;&gt;&#xA;  Ergodicity Economics&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#ergodicity-economics&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=nnwNqYPVK9k&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EE2021&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=XTV74U3nb-o&amp;amp;t=1s&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EE2022&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;non-probabilistic-tree-based-option-pricing&#34;&gt;&#xA;  Non-probabilistic, tree-based, option pricing:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#non-probabilistic-tree-based-option-pricing&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;My work(joint with Sebastian Ferrando) can be found here:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Teaching</title>
-      <link>http://localhost:1313/teaching/</link>
+      <link>https://awlfleck.github.io/teaching/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/teaching/</guid>
-      <description>&lt;p&gt;In a previous life (Winters &amp;lsquo;21 &amp;amp; &amp;lsquo;23) I was the course director and instructor respectively for&amp;hellip;&lt;/p&gt;&#xA;&lt;h3 id=&#34;4281&#34;&gt;&#xA;  4281:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#4281&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/4281_Outline.pdf&#34; &gt;Course outline&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/4281_Lectures.zip&#34; &gt;4281&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;2030&#34;&gt;&#xA;  2030:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#2030&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Maybe put giscus here for discussion on material?&lt;/p&gt;</description>
+      <guid>https://awlfleck.github.io/teaching/</guid>
+      <description>&lt;p&gt;In a previous life (Winters &amp;lsquo;21 &amp;amp; &amp;lsquo;23) I was the course director and instructor respectively for&amp;hellip;&lt;/p&gt;&#xA;&lt;h3 id=&#34;4281&#34;&gt;&#xA;  4281:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#4281&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://awlfleck.github.io/4281_Outline.pdf&#34; &gt;Course outline&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://awlfleck.github.io/4281_Lectures.zip&#34; &gt;4281&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;2030&#34;&gt;&#xA;  2030:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#2030&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Maybe put giscus here for discussion on material?&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
