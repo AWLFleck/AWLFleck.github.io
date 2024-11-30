@@ -1,0 +1,424 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Module 1 (Final Lecture)} \\
+    \vspace{1cm}
+    {\large  January 28, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Where we left off - the distribution of a Compound Distribution}
+
+It is possible to get a fairly general expression for the CDF of $S$ (a "compound *\textit{blank}* distribution") by conditioning on the number of claims:
+
+\vfill
+
+$$F_S(x)=\sum_{n=0}^\infty \Pr[S\le x|N=n]\Pr[N=n]=\alert{\sum_{n=0}^\infty F^{*n}_X(x)p_n},$$
+
+\vfill
+
+where $F^{*n}_X(x)$ is the $n$-fold convolution of $F_X (x)$.
+
+Note that
+\begin{itemize}
+\item $N$ will always be discrete, so this works for any type of RV $X$ (continuous, discrete or mixed)
+\item however, the type of $S$ will depend on the type of $X$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Type of $X$}
+
+If $X$ is continuous, $S$ will generally be mixed:
+\begin{itemize}
+\item with a mass at 0 because of $\Pr[N=0]$ (if positive)
+\item continuous elsewhere, but with a density integrating to $1-\Pr[N=0]$
+\end{itemize}
+
+\vfill
+
+If $X$ is mixed, $S$ will generally be mixed:
+\begin{itemize}
+\item Other than $\Pr[N=0]$ consider if $X$ is not continuous for $x>0$
+\item with a density integrating to something $\le 1-\Pr[N=0]$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{But if $X$ discrete?}
+
+\begin{itemize}
+
+\item For discrete $X$'s there is a similar expression for the pmf of $S$:
+
+$$f_S(x)=\sum_{n=0}^\infty \Pr[S= x|N=n]\Pr[N=n]=\alert{\sum_{n=0}^\infty f^{*n}_X(x)p_n},$$
+
+\vfill
+
+\item Where $f^{*0}_X(0)=1$ (and thus 0 anywhere else)
+
+\vfill
+
+\item Obviously this can be implemented in a table and/or in a program in the manner we have seen
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{However...}
+
+\begin{itemize}
+\item However, if the range of $N$ goes really to the infinity, calculating $f_S(x)$ may require an infinity of convolutions of $X$
+
+\vfill
+
+\item This formula is more efficient if the number of possible outcomes for $N$ is small
+
+\vfill
+
+\item We will explore two algorithms for simplifying these calculations in the next section
+
+ (see next section)
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Approximating $S$ in the CRM: Discrete Methods}
+\subsection{The Sparse Vector Algorithm}
+\begin{frame}[t]{Example}
+Suppose that $N_1, N_2,\cdots, N_m$ are independent random variables. Further, suppose that $N_i$ follows Poisson($\lambda_i$). Let $x_1,x_2,\cdots, x_m$ be deterministic numbers. What is the distribution of the following:
+$$x_1N_1+\cdots+x_mN_m?$$
+\vfill
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ex (cont.)}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Theorem}
+If $S\sim\text{compound Poisson}(\lambda,\mbox{Pr} (X = x_i) =\pi_i)$, $i=1,\ldots,m$ then
+
+\vfill
+
+$$S=x_1N_1+\ldots+x_mN_m,$$
+
+\vfill
+
+where the $N_i$'s
+\begin{itemize}
+\item represent the number of claims of amount $x_i$
+\item are mutually independent
+\item are Poisson$(\lambda_i=\lambda \pi_i)$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{So What?}
+\begin{itemize}
+\item Allows to develop an alternative method for tabulating the distribution of $S$ that is more efficient as $m$ is small called the \alert{Sparse Vector Algorithm}
+
+\vfill
+
+\item $S$ can be used to approximate the Individual Risk Model if $X=IB$ where $I=1$ if $N>0$ and $B=xN$. 
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The sparse vector algorithm: examples}
+Suppose $S$ has a compound Poisson distribution with $\lambda =0.8$ and individual claim amount distribution
+$$ \begin{tabular}{ccc}
+\hline $x$ &  & $\Pr\left[ X=x\right] $ \\ \hline\hline
+1 &  & 0.250 \\
+2 &  & 0.375 \\
+3 &  & 0.375 \\ \hline
+\end{tabular} $$
+Compute $f_{S}\left( x\right) =\Pr\left[ S=x\right] $ for $x=0,1,...,6$.
+
+This can be done in two ways:
+\begin{itemize}
+\item Basic method (seen earlier in the lecture): requires to calculate up to the 6th convolution of $X$
+\item Sparse vector algorithm: requires no convolution of $X$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Solution - Basic Method}
+\begin{center}
+\tiny
+\begin{tabular}{ccccccccc}
+\hline
+(1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9) \\
+$x$ & $f_X^{\ast 0}\left( x\right) $ & $f_X\left( x\right) $ &
+$f^{\ast 2}_X\left(
+x\right) $ & $f_X^{\ast 3}\left( x\right) $ & $f_X^{\ast 4}\left( x\right) $ & $%
+f_X^{\ast 5}\left( x\right) $ & $f_X^{\ast 6}\left( x\right) $ &
+$f_{S}\left( x\right) $ \\ \hline\hline
+0 & 1 & - & - & - & - & - & - & 0.4493 \\
+1 & - & 0.250 & - & - & - & - & - & 0.0899 \\
+2 & - & 0.375 & 0.0625 & - & - & - & - & 0.1438 \\
+3 & - & 0.375 & 0.1875 & 0.0156 & - & - & - & 0.1624 \\
+4 & - & - & 0.3281 & 0.0703 & 0.0039 & - & - & 0.0499 \\
+5 & - & - & 0.2813 & 0.1758 & 0.0234 & 0.0010 & - & 0.0474 \\
+6 & - & - & 0.1406 & 0.2637 & 0.0762 & 0.0073 & 0.0002 & 0.0309 \\ \hline
+$n$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 &  \\
+$e^{-0.8}\frac{\left( 0.8\right) ^{n}}{n!}$ & 0.4493 & 0.3595 &
+0.1438 & 0.0383 & 0.0077 & 0.0012 & 0.0002 &  \\ \hline
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item The convolutions are done in the usual way
+\item The $f_S(x)$ are the sumproduct of the row $x$ and row $\Pr[N=n]$
+\item The number of convolutions (and thus of columns) will increase by 1 for each new value of $f_S(x)$, until the infinity!
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Solution - Sparse Vector Algorithm}
+\small
+Thanks to out theorem we can write $S=N_1+2N_2+3N_3$. Now only two convolutions are needed! (columns (5) and (6))
+
+\begin{center}
+\tiny
+\begin{tabular}{cccccc}
+\hline
+(1) & (2) & (3) & (4) & (5) & (6) \\
+$x$ & $\Pr\left[ N_{1}=x\right] $ & $\Pr\left[ 2N_{2}=x\right] $ &
+$\Pr\left[ 3N_{3}=x\right] $ & $\Pr\left[ N_{1}+2N_{2}=x\right] $ &
+$f_{S}\left( x\right)
+$ \\
+&  &  &  & = (2)*(3) & = (4)*(5) \\ \hline\hline
+0 & 0.818731 & 0.740818 & 0.740818 & 0.606531 & 0.449329 \\
+1 & 0.163746 & 0 & 0 & 0.121306 & 0.089866 \\
+2 & 0.016375 & 0.222245 & 0 & 0.194090 & 0.143785 \\
+3 & 0.001092 & 0 & 0.222245 & 0.037201 & 0.162358 \\
+4 & 0.000055 & 0.033337 & 0 & 0.030974 & 0.049906 \\
+5 & 0.000002 & 0 & 0 & 0.005703 & 0.047360 \\
+6 & 0.000000 & 0.003334 & 0.033337 & 0.003288 & 0.030923 \\ \hline
+$x_i$ & 1 & 2 & 3 &  &  \\
+$\lambda _{i}=\lambda \pi_i$ & 0.2 & 0.3 & 0.3 &  &  \\
+$\Pr[N_i=x/i]$& $e^{-0.2}\frac{\left( 0.2\right) ^{x}}{x!}$ &
+$e^{-0.3}\frac{\left(
+0.3\right) ^{x/2}}{(x/2)!}$ & $e^{-0.3}\frac{\left( 0.3\right) ^{x/3}}{(x/3)!%
+}$ &  &  \\ \hline
+\end{tabular}
+\end{center}
+
+\vfill
+
+%$$  =.818731\cdot0+.163746\cdot.222245+.016375\cdot0+.001092\cdot.740818$$
+
+%\begin{itemize}
+%\item 
+%\end{itemize}
+%\item The $f_S(x)$ are the sumproduct of the row $x$ and row $\lambda_i$:
+%$$(5)[3]
+%$$(6)[3]=.740818\cdot.037201+0\cdot.194090+0\cdot.121306+.222245\cdot.606531$$
+
+%\begin{itemize}
+%\item The number of columns is 5, whatever the number \linebreak of values for $f_S(x)$ you need!
+%\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Panjer's Recursion Algorithm}
+\begin{frame}{Another Algorithm}
+
+The $(a,b,0)$ family is a family of distributions with the following property
+\vfill
+$$\Pr[N=k]=\left(a+\frac{b}{k}\right)\Pr[N=k-1], \quad k = 1, 2, \cdots.$$
+\vfill
+\alert{$\Longrightarrow$} $\Pr[N=n]$ can be obtained by recursion given $\Pr[N=0]$.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+The \underline{\textit{exhaustive}} list of the $(a,b,0)$ members is: 
+
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline Distribution &  $a$ & $b$ & $\Pr[N=0]$\\ \hline
+Poisson$\left( \lambda \right) $ & $0$ &  $\lambda $ & $e^{-\lambda}$ \\
+Neg Bin$\left( r,\beta\right) $ & $\beta/1+\beta$ &  $(r-1)\beta/(1+\beta)$  & $(1+\beta)^{-r}$\\
+Binomial$\left( m,q\right) $ & $-q/(1-q) $ & $(m+1)q/(1-q) $ & $(1-q)^m$ \\ \hline
+\end{tabular}%
+\end{center}
+
+e.g. for Poisson:
+
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Panjer's recursion algorithm}
+
+\begin{itemize}
+\item The remarkable property of the $(a,b)$ family allows us to develop a recursive method to get the distribution of $S$ for discrete $X$'s.
+\vfill
+\item I will present the algorithm without proof here. But I attached a supplemental document with Mikosch's proof (which I prefer to Klugman et al.).
+\vfill
+\item The algorithm is very stable when $N$ is Poisson and Negative Binomial, but less stable when $N$ is Binomial.
+
+\end{itemize}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Panjer's Recursion Formula}
+If
+\begin{itemize}
+\item $S$ has a compound distribution on $X$
+\item $X$ is non-negative and discrete 
+\item $N$ is of the $(a,b,0)$ family
+\end{itemize}
+
+Then
+$$f_{S}\left( s\right) =\frac{1}{1-af_X\left( 0\right) }\sum_{j=1}^{s}\left( a+\frac{bj}{s}\right) f_X\left( j\right) f_{S}\left( s-j\right),\quad s=1,2,\ldots,$$
+with starting value
+$$f_{S}\left( 0\right) =\left\{
+\begin{array}{ll}
+\Pr\left[ N=0\right] , & \text{if }f_X\left( 0\right) =0 \\
+P_{N}\left[ f_X\left( 0\right) \right] , & \text{if }f_X\left( 0\right) >0.
+\end{array}
+\right. $$
+%Note that if $f_X(x)=0$ for $x>x_{\text{max}}$ then the upper bound of the sum can be reduced to $\min(s,x_{\text{max}})$.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Panjer's recursion for compound Poisson}
+If $S\sim\text{compound Poisson}(\lambda,f_X(x))$ the algorithm reduces to
+$$f_{S}\left( s\right) =\frac{\lambda}{s}\sum_{j=1}^{s} j\,f_X\left(j\right) f_{S}\left( s-j\right) $$
+with starting value
+$$f_{S}\left( 0\right) =e^{\lambda(f_X(0)-1)}$$
+(whether $f_X(0)$ is positive or not).
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Previous Example using the recursion formula}
+Effectively, the recursion formula boils down to
+$$f_{S}\left( s\right) =\frac{1}{s}\left[ 0.2f_{S}\left( s-1\right)+0.6f_{S}\left( s-2\right) +0.9f_{S}\left( s-3\right) \right], \;\; (\text{for }s>2)$$
+with starting value
+$$f_{S}\left( 0\right) =\Pr\left[ N=0\right]=e^{-0.8}=0.44933.$$
+We have then
+\begin{eqnarray*}
+f_{S}\left( 1\right) &=& 0.2f_{S}\left( 0\right) =0.2e^{-0.8}=0.089866 \\
+f_{S}\left( 2\right) &=&\frac{1}{2}\left[ 0.2f_{S}\left( 1\right)+0.6f_{S}\left( 0\right) \right] =0.32e^{-0.8}=0.14379 \\
+f_{S}\left( 3\right) &=&\frac{1}{3}\left[ 0.2f_{S}\left( 2\right)+0.6f_{S}\left( 1\right) +0.9f_{S}\left( 0\right) \right]=0.3613e^{-0.8}=0.16236
+\end{eqnarray*}
+\begin{center}
+$\vdots$ \\
+etc
+\end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Concluding remarks}
+\begin{frame}
+
+\begin{itemize}
+\item When $X$ is continuous, it is possible to discretise its distribution (advanced methods out of the scope of this course). 
+\vfill
+\item Can be very accurate. If you are curious Sec. 9.6.5 "Constructing Arithmetic Distributions" in Klugman et al.
+\vfill
+\item There also exists a corollary to Panjer for computing convolutions in the IRM. This is called DePril's Algorithm. 
+\vfill
+\item Panjer Recursion can be generalized to calculate the ``probability of ruin'' in the Cram\'er-Lundberg model (Module~2).
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Approximating $S$ in the CRM: Normal Approximation}
+\begin{frame}{Approximations}
+Possible motivations:
+\vfill
+\begin{itemize}
+\item It is not possible to compute the distribution of $S$ e.g. no detailed data is available except for the moments of $S$
+
+\vfill
+\item The risk of having a sophisticated---but wrong---model is too high if limited data is available to fit the model
+\vfill
+\item A quick approximation is needed.
+\vfill
+\item A higher level of accuracy is not required (does not justify the resources necessary to calculate an exact probability)
+\end{itemize}
+%Note: let $\gamma_1(S)\equiv\gamma_1$ and $\gamma_2(S)\equiv\gamma_2$ in this section.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{CLT approximation assuming symmetry}
+The Central Limit Theorem suggests that
+\begin{eqnarray*}
+F_{S}\left( s\right)  &=&\Pr\left[ S\leq s\right] =\Pr\left[ \frac{S-E[S] }{\sqrt{Var(S)} }\leq \frac{s-E[S] }{\sqrt{Var(S)} }\right]  \\
+&\approx &\Pr\left[ Z\leq \frac{s-E[S] }{\sqrt{Var(S)} }\right]=\Phi \left( \frac{s-E[S] }{\sqrt{Var(S)} }\right) ,
+\end{eqnarray*}
+%where $Z$ is a standard Normal random variable and where $\Phi \left( \cdot \right) $ denotes its cdf.
+\vfill
+This approximation performs poorly
+\begin{itemize}
+\item individual model: for small $n$ (generally $n\leq 30$)
+\item collective model: for small $\lambda$ (compound Poisson) and small $r$ (compound negative binomial)
+\item for \alert{highly skewed} distributions
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{CLT Approximation allowing for skewness}
+Two "Normal\footnote{That is, power levels bellow 9,000 \includegraphics[scale=0.05]{sad.png}} Power Levels":
+\begin{itemize}
+\item \alert{NP1}: this is the CLT approximation
+\item \alert{NP2}: CLT but with a correction taking the skewness into account. Given that \alert{$x>E[S]+\sqrt{Var(S)}$}:
+$$\Pr\left[ \frac{S-E[S] }{\sqrt{Var(S)} }\leq x\right] \approx \Phi \left( s\right)$$
+with
+$$x=s+\frac{\gamma_1}{6} \left(s^{2}-1\right)\quad\text{ or }\quad s=\sqrt{\frac{9}{\gamma_1 ^{2}}+\frac{6x}{\gamma_1 }+1}-\frac{3}{\gamma_1 }$$
+ 
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+A total claim amount $S$ has expected value 10000, standard deviation 1000 and
+skewness 1. Use the CLT to find the probability that $S$ is greater than 13000.
+\begin{itemize}
+\item \alert{NP1}:
+\begin{eqnarray*}
+\Pr (S > 13000) &=& \Pr \left(\frac{S - {\mbox E}[S]}{\sqrt{\mbox{Var} (E)}} > \frac{13000-10000}{1000} \right)\\
+    &\approx&1 - \Phi (3) =0.013 .
+    \end{eqnarray*}
+\item \alert{NP2}
+\begin{eqnarray*}
+\Pr (S > 13000) &=& \Pr \left(\frac{S - {\mbox E}[S]}{\sqrt{\mbox{Var} (E)}} > \frac{13000-10000}{1000} \right)\\
+    &\approx&1 - \Phi (\sqrt{9+6\times3+1}-3) \\
+    &=& 1 - \Phi (2.29) =0.011.
+    \end{eqnarray*}
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{center}
+End of Module 1
+\end{center}
+\end{frame}
+
+\end{document}

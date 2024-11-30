@@ -1,0 +1,327 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Module 1 (cont.)} \\
+    \vspace{1cm}
+    {\large  January 14, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Generating Functions and Convolutions (cont.)}
+\begin{frame}{An Example Exercise of a Convolution } 
+
+Requested last class. Consider 3 independent discrete RVs with PMFs:
+  \begin{eqnarray*}
+    f_{1}\left( x\right)  &=&\frac{1}{4},\frac{1}{2},\frac{1}{4}\text{ for }x=0,1,2 \\
+    f_{2}\left( x\right)  &=&\frac{1}{2},\frac{1}{2}\text{ for }x=0,2 \\
+    f_{3}\left( x\right)  &=&\frac{1}{4},\frac{1}{2},\frac{1}{4}\text{ for }x=0,2,4
+  \end{eqnarray*}
+  Complete the following table for the PMF $f_{1+2+3}$ and the CDF $F_{1+2+3}$ of the sum of the three random variables.
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{center}
+    \vspace{-0.3cm}
+    \begin{tabular}{ccccccc}
+      \hline $x$ & $f_{1}\left( x\right) $ & $f_{2}\left( x\right) $ &
+      $f_{1+2}\left(
+        x\right) $ & $f_{3}\left( x\right) $ & $f_{1+2+3}\left( x\right) $ & $%
+      F_{1+2+3}\left( x\right) $ \\ \hline
+      $0$ & $1/4$ & $1/2$ & $1/8$ & $1/4$ & $1/32$ & $1/32$ \\
+      $1$ & $1/2$ & $0$ & $-$ & $0$ & $-$ & $3/32$ \\
+      $2$ & $1/4$ & $1/2$ & $-$ & $1/2$ & $-$ & $7/32$ \\
+      $3$ & $0$ & $0$ & $-$ & $0$ & $-$ & $-$ \\
+      $4$ & $0$ & $0$ & $-$ & $1/4$ & $-$ & $-$ \\
+      $5$ & $0$ & $0$ & $0$ & $0$ & $-$ & $-$ \\
+      $6$ & $0$ & $0$ & $0$ & $0$ & $-$ & $-$ \\
+      $7$ & $0$ & $0$ & $0$ & $0$ & $-$ & $-$ \\
+      $8$ & $0$ & $0$ & $0$ & $0$ & $-$ & $-$ \\ \hline
+    \end{tabular}
+  \end{center}
+
+E.g. $f_{1+2}(0) = f_1(0)f_2(0) = \left(\frac{1}{4}\right) \left(\frac{1}{2}\right)=\frac{1}{8}$ as given. 
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Another Example Exercise of a Convolution } 
+\vspace{-3 cm}
+Consider independent $X,Y \sim \mathcal{U}[0,1]$. Find the pdf of $X+Y$: 
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Normal MGF}
+  
+A quick review of how to handle some kinds of Gaussian integrals. Note that\footnote{complete the square}:
+
+$$ tx- \frac{(x-\mu)^2}{2\sigma^2} = -\frac{(x-(\mu + \sigma^2 t))^2}{2\sigma^2} + \mu t + \frac{\sigma^2 t^2}{2} $$
+  
+  \vfill
+  
+Then clearly for $X \sim \mathcal{N}(\mu,\sigma^2)$:
+
+$$ E[ e^{tX} ] = e^{\mu t + \frac{\sigma^2 t^2}{2}} \left(\frac{1}{\sqrt{2\pi} \sigma}\int\limits_{-\infty}^{\infty} e^{ -\frac{(x-(\mu + \sigma^2 t))^2}{2\sigma^2}} dx\right) =  e^{\mu t + \frac{\sigma^2 t^2}{2}}$$  
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Another IRM example}
+\vspace{- 3 cm}
+\textbf{Example:} Consider a portfolio of 10 contracts. The losses $X_i$'s for these contracts are i.i.d. Normal RVs with mean 100 and variance 100.  Determine the distribution of $S$.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Normal Approximations for the distribution of the Sum}
+
+   \begin{itemize}
+   \item Assume $X_1,\cdots,X_n$ are independent and $S=X_1+\cdots+X_n.$
+
+\vfill
+
+   \item Then $E[S]=\sum_{i=1}^n E[X_i]$,  $Var[S]=\sum_{i=1}^n Var[X_i]$
+
+\vfill 
+
+   \item When $n$ is large (at least 30), the distribution of $\frac{S-E[S]}{\sqrt{Var(S)}}$ can be approximated by the standard normal distribution.
+   \end{itemize}
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Theoretic Foundation of Normal Approximations}
+
+\begin{itemize}
+   \item The central limit theorem\footnote{Theorem 3.7 of the loss models textbook}: 
+   
+   \begin{eqnarray*}
+   \frac{S-E[S]}{\sqrt{Var(S)}} \stackrel{d}\longrightarrow N (0, 1)
+   \end{eqnarray*}
+   
+   \item Q: why the "d" above the arrow?
+   
+   \item Q: How could this apply to the normal approximation to the binomial I used yesterday?
+  
+   \item Q: How to prove the CLT via using MGFs
+
+\end{itemize}
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A proof of the CLT}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A proof of the CLT}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Frequency and Severity in the IRM}
+\begin{frame}{ A Problem Unique to the IRM}
+  
+\begin{itemize}
+
+\item In the CRM we call $N$ the "frequency distribution" and $X_i$ the "severity".
+
+\vfill
+
+\item Recall in the IRM $N$ is fixed at $n$, some number we know a priori.
+
+\vfill
+
+\item But not every individual is always claiming coverage, in fact, the opposite is true. \\
+\color {red} $\Rightarrow$ Must be a big mass of probability at $x=0$! \color {black}
+
+\vfill
+
+\item How to handle this?
+
+\end{itemize}  
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{ A Problem Unique to the IRM}
+
+For example consider a individual loss like so:
+
+\vfill 
+
+  $$\left\{\begin{array}{ll}Pr\left( X=0\right) =1/2, \\
+      f_X(x) =\frac{1}{2}\beta e^{-\beta x}, \text{ for }\beta =0.1,\;\;\; x>0
+    \end{array}\right.$$
+    
+\vfill    
+    
+\begin{itemize}
+    
+\item Q: How easily can we take convolutions?
+
+\item Q: How easily can we take \emph{n-fold} convolutions?
+
+\item Q: Mean? Var? MGFs?    
+    
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{How to Separate Frequency from Severity}
+
+One approach is to define $X=IB$, where:
+\vfill
+\begin{itemize}
+\item \alert{$I$} is an \textit{\underline{indicator}} of claim with $$\Pr\left[ I=1\right] =q\text{ and }\Pr\left[ I=0\right] =1-q$$
+\vfill
+\item \alert{$B$} is the claim amount given $I=1$ (i.e. given a claim occurs).
+\end{itemize}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The distribution function:}
+
+Assume $\Pr\left[ I=1\right] =q$ and $\Pr\left[ X< 0 \right] = 0$, then for $x\geq 0$:
+
+\begin{align*}
+ \Pr\left[ X\leq x \right] &=\Pr\left[ X\leq x | I=0\right]\Pr[I=0]+\Pr\left[ X\leq x | I=1\right]\Pr[I=1]\\
+ &= (1) (1-q) + (q) \Pr\left[ (1)B\leq x | I=1\right] \\
+ &=1-q+q\Pr\left[ B\leq x \right] 
+\end{align*}
+    
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Moments}
+
+\begin{itemize}
+
+\item The Mean\footnote{Recall the "Tower Property"}:
+$$E\left[ X\right] =E\left[ E\left[ X\left\vert I\right. \right]\right] =E\left[ X\left\vert I\right. =1\right] \Pr\left[ I=1\right]=qE\left( B\right),$$
+
+\vfill
+\item Variance\footnote{The first line makes use of the "Law of Total Variance"}:
+
+    \begin{eqnarray*}
+      Var\left( X\right) &=&Var\left( E\left[ X\left\vert I\right.\right] \right)+E\left[ Var\left( X\left\vert I\right. \right) \right] \\
+      &=&\left[ E\left( B\right) \right] ^{2}Var\left( I\right)+qVar\left(B\right) \\
+      &=&q\left( 1-q\right) \left( E\left[ B\right] \right)^{2}+qVar\left( B\right)
+    \end{eqnarray*}
+    after noting that
+    $
+    E[ X|I] =I \cdot E[ B],\;
+    Var( X| I)=I^2 \cdot Var(B).$
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Generating Functions}
+  
+\begin{itemize}
+
+\item MGF: 
+
+\begin{align*}
+M_X(t)&=E[e^{tX}|I=0]\Pr(I=0)+E[e^{tX}|I=1]\Pr(I=1) \\
+&=1-q+E[e^{tB}]q=1-q+M_B(t)q
+\end{align*}
+
+\item PGF: 
+
+\begin{align*}
+P_X(t)&=E[t^X|I=0]\Pr(I=0)+E[t^X|I=1]\Pr(I=1) \\
+  &=1-q+P_B(t)q
+\end{align*}
+
+\end{itemize}
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aggregate loss: $S = \sum^n_{i=1} X_i$}
+  \begin{itemize}
+  \item Each $X_i$ is separated by $X_i = I_i B_i$, for $i = 1, 2, \ldots, n$
+  \item Mean:
+    $
+    E[S] = \sum^n_{i=1} q_i \mu_i$, where $q_i = \mbox{Pr} (I_i = 1)$ and $\mu_i = {\mbox E} [ B_i ]$
+  \item Variance $$Var(S)= \sum^n_{i=1} [q_i \sigma_i^2 + q_i (1 - q_i) \mu_i^2]$$
+  where $\sigma_i^2 = \mbox {Var} (B_i)$
+  \item MGF: $$M_S(t)=\prod^n_{i=1}[1-q_i+M_{B_i}(t)q_i]$$
+  \item What is the PGF? (Exercise)
+  \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A Familiar Example}
+
+Suppose claim amount $X$ is distributed as:
+  $$\left\{\begin{array}{ll}P\left( X=0\right) =1/2, \\
+      f_X(x) =\frac{1}{2}\beta e^{-\beta x}, \text{ for }\beta =0.1,\;\;\; x>0
+    \end{array}\right.$$
+  \begin{enumerate}
+  \item Find the expected value of $X$.
+  \item Find $I$ and $B$ such that $X=IB$.
+  \end{enumerate}
+
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A Familiar Example}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A Familiar Example}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Another Example}
+\vspace{- 3cm}  
+  \textbf{Example} In an insurance portfolio, there are 15 insured.Ten of the insured persons have 0.1 probability of making a claim, and the other 5 have a 0.2 probability. All claims are independent and follow $Exp(\lambda)$ (Note: $1/\lambda$ is the mean). What is the MGF of the aggregate claims distribution?
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

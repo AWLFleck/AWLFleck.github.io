@@ -1,0 +1,3 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Policy Transforms }{4}{0}{1}
+\beamer@sectionintoc {2}{ Reinsurance }{11}{0}{2}

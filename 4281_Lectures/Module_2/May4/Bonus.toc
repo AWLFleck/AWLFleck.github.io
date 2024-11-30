@@ -1,0 +1,5 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Review of the It\^{o} calculus}{3}{0}{1}
+\beamer@sectionintoc {2}{Computing Ruin Probabilities}{10}{0}{2}
+\beamer@sectionintoc {3}{Investing your insurance float}{16}{0}{3}
+\beamer@sectionintoc {4}{What is Optimal: Kelly vs Ruin vs ?}{22}{0}{4}

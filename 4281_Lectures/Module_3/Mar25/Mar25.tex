@@ -1,0 +1,340 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{comment}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Module 3: Credibility Theory finale and \alert{the last lecture!}} \\
+    \vspace{1cm}
+    {\large  March 25th, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Non-Parametric B\"uhlmann model}
+\begin{frame}{Recall from last class}
+
+\begin{itemize}
+\item $X_{jt}$: claims size of policy $j$ during year $t$.
+\item Available data, $1\le j\le J$, $1\le t \le T$:
+\begin{tabular}{l|ccccc|cc}
+\multicolumn{1}{r}{year $t$} & 1 & 2 & 3 & $\cdots$ & $T$ & Risk & Mean \\ \hline
+policy $j=1$ & $X_{11}$ & $X_{12}$ & $X_{13}$ & $\cdots$ & $X_{1T}$ & $\theta_1$ & $\bar{X}_{1\Sigma}$ \\
+policy $j=2$ & $X_{21}$ & $X_{22}$ & $X_{23}$ & $\cdots$ & $X_{2T}$ & $\theta_2$ & $\bar{X}_{2\Sigma}$ \\
+policy $j=3$ & $X_{31}$ & $X_{32}$ & $X_{33}$ & $\cdots$ & $X_{3T}$ & $\theta_3$ & $\bar{X}_{3\Sigma}$ \\
+\multicolumn{1}{c|}{\vdots} & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+policy $j=J$ & $X_{J1}$ & $X_{J2}$ & $X_{J3}$ & $\cdots$ & $X_{JT}$ & $\theta_J$ & $\bar{X}_{J\Sigma}$
+\end{tabular}
+%\item $\Theta_1, \Theta_2,\ldots,\Theta_m$ are iid
+\item $X_{11},X_{12},\ldots,X_{JT}$ are $iid$ conditional on $\Theta$.
+\item $\mu(\theta_j)=E[X_{jt}|\Theta=\theta_j]$
+\item $\sigma^2(\theta_j)=Var(X_{jt}|\Theta=\theta_j)$
+\end{itemize}
+\begin{columns}
+\column{0.8\textwidth}
+\begin{equation}\alert{P^{cred}_{j,T+1}=z \bar{X}_{j\Sigma} + (1-z)m,\;\;\;i=1,\ldots,J}\end{equation}
+\end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Nonparametric estimation (unbiaised estimators)}
+
+Estimation of $E[\mu(\Theta)]=m$:
+\begin{equation}\bar{X}_{\Sigma\Sigma}=\frac{1}{J}\sum_{j=1}^J \bar{X}_{j\Sigma}=\frac{\sum_{j=1}^J\sum_{t=1}^T X_{jt}}{JT}\end{equation}
+Estimation of $E[\sigma^2(\Theta)]=s^2$:
+\begin{equation}\hat{s}^2=\frac{1}{J}\sum_{j=1}^J\hat{s}_j^2=\frac{1}{J}\sum_{j=1}^J \sum_{t=1}^T \frac{(X_{jt}-\bar{X}_{j\Sigma})^2}{T-1}\end{equation}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Nonparametric estimation (unbiaised estimators)}
+Estimation of $Var(\mu(\Theta))=a$:
+
+(B{\"u}hlmann's estimator)
+\begin{equation}\hat{a}_B=Max\left\{\frac{\sum_{j=1}^J(\bar{X}_{j\Sigma}-\bar{X}_{\Sigma\Sigma})^2}{J-1}-\frac{1}{T}\hat{s}^2\;;\;0\right\}\end{equation}
+
+(CAS's estimator)
+\begin{equation}\hat{a}_{CAS}=Max\left\{\frac{\sum_{j=1}^J\sum_{t=1}^T(X_{jt}-\bar{X}_{\Sigma\Sigma})^2}{JT-1}-\hat{s}^2\;;\;0\right\}\end{equation}
+
+
+\begin{itemize}
+\item If $\hat{a}=0$ then $z=0$, which makes sense
+
+(all risks have the same parameter)
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example 2}
+
+You are given the following past claims data on a portfolio of three classes of policyholders:%
+\begin{center}
+\begin{tabular}{ccrcrcr}
+\hline
+&  & \multicolumn{5}{c}{Year} \\
+Class &  & 1 &  & 2 &  & 3 \\ \hline
+%&  &  &  &  &  &  \\
+$1$ &  & $700$ &  & $800$ &  & $600$ \\
+%&  &  &  &  &  &  \\
+$2$ &  & $625$ &  & $500$ &  & $675$ \\
+%&  &  &  &  &  &  \\
+$3$ &  & $800$ &  & $850$ &  & $750$ \\ \hline
+\end{tabular}%
+\end{center}%
+Estimate the B\"uhlmann credibility premium to be charged in year 4
+for each class of policyholder.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The B{\"u}hlmann-Straub model}
+\begin{frame}{Adding more realism to the B{\"u}hlmann model}
+
+\begin{itemize}
+\item Often we have somewhat coarse data available to us (this is changing but in 1970 when this model was introduced it was even more true).
+
+\vfill
+
+\item Many lines of business have a premium of the type ``volume measure'' times ``premium rate''.
+
+\vfill
+
+\item In this case we use an extension of B{\"u}hlmann model: B{\"u}hlmann-Straub.
+
+\vfill
+
+\item by far the most used and the most important credibility model for insurance practice.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The model}
+There are $1\le j \le J$ classes of risk (or contracts).
+
+For the $j$-th class/contract:
+\begin{itemize}
+\item $S_{jt}$ is the aggregate claim amount in year $t$ ( $1\le t \le T$)
+
+\vfill
+
+\item $w_{jt}$ is the "volume" associated to $S_{jt}$ in year $t$
+
+\vfill
+
+\item $X_{jt}=S_{jt}/w_{jt}$ is the claim amount per unit of volume in year $t$
+
+\vfill
+
+\item One (my favourite) interpretation: average claim costs per year at risk in year $t$ if $w_{jt}$ is the number of years at risk during year $t$. That is if:
+
+$$ S_{jt} = \sum_{k=1}^{w_{jt}} Y_{jt,k} $$
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Assumptions}
+\begin{itemize}
+\item risk class/contract $j$ is characterized by its specific risk parameter $\theta_j$, which is the realization of a rv $\Theta_i$ 
+
+\vfill
+
+\item Conditional on $\Theta_i$, the $\{X_{jt}:t=1,2,\cdots,T\}$ are iid with $\mu(\theta_j)=E[X_{jt}|\Theta=\theta_j]$ \alert{but now:}\footnote{In the previous interpretation,$\mu(\theta_j)=E[Y_j]$ and $\sigma^2(\theta_j) = Var(Y_j)$. }
+
+ $$Var(X_{jt}|\Theta=\theta_j)=\frac{\sigma^2(\theta_j)}{w_{jt}}$$
+ 
+
+\vfill
+
+\item the pairs $(\Theta_1,\mathbf{X_1}),(\Theta_2,\mathbf{X_2}),\ldots$ are independent
+
+\vfill
+
+\item $\Theta_1,\Theta_2,\ldots$ are iid (from the structural distribution)
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{"New Quantities"}
+
+\begin{columns}
+\column{0.5\textwidth}
+\vspace{- 1.9 cm}
+\begin{itemize}
+\item[] Risk $j$:
+
+\item individual risk premium
+
+$ \mu(\theta_j)=E[X_{jt}|\Theta=\theta_j]$
+\item variance within individ. risk
+
+$\sigma^2(\theta_j)=w_{jt}Var(X_{jt}|\Theta=\theta_j)$
+\item aggregate volume
+
+$w_{j\Sigma}=\sum_{t=1}^T w_{jt}$
+\item weighted mean of outcomes
+
+$\bar{X}_{j\Sigma}=\sum_{t=1}^T \frac{w_{jt}}{w_{j\Sigma}} X_{jt}$
+\end{itemize}
+
+\column{0.5\textwidth}
+\begin{itemize}
+\item[] Collective: 
+
+\item collective premium
+
+$m=E[\mu(\Theta)]$
+\item variance between individual risk premiums
+
+$a=Var(\mu(\Theta))$
+\item average variance within individual risks
+
+$s^2=E[\sigma^2(\Theta)]$
+\item aggregate volume
+$w_{\Sigma\Sigma}=\sum_{j=1}^{J}w_{j\Sigma}$
+
+\item weighted mean of outcomes
+
+$\bar{X}_{\Sigma\Sigma}=\sum_{j=1}^J \frac{w_{j\Sigma}}{w_{\Sigma\Sigma}} \bar{X}_{j\Sigma}$
+\end{itemize}
+\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{If $m$, $s^2$ and $a$ are known}
+
+The credibility estimator in the B{\"u}hlmann-Straub model is given by
+$$\alert{P_{j,T+1}^{cred}=z_j \bar{X}_{j\Sigma}+(1-z_j)m=m+z_j(\bar{X}_{j\Sigma}-m)},$$
+where
+\begin{eqnarray*}
+z_j & = & \frac{w_{j\Sigma}}{w_{j\Sigma}+K} \\
+K & = & \frac{E[\sigma^2(\Theta)]}{Var(\mu(\Theta))}
+\end{eqnarray*}
+Remarks:
+\begin{itemize}
+\item the credibility factor $z_j$ now depends  on $j$
+\item if $w_{jt}=1$, then $w_{j\Sigma}=T$ and $z_j$ is equivalent to the $z$ of the simple B{\"u}hlmann model
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\begin{frame}{Accuracy}
+
+In the B{\"u}hlmann-Straub model, the quadratic loss (QL) of the credibility estimator $P_{j,T+1}^{cred}$ is:
+$$E[(P_{j,T+1}^{cred}-\mu(\theta_i))^2]=(1-z_j)Var(\mu(\Theta)))
+=z_j\frac{E[\sigma^2(\Theta)]}{w_{j\Sigma}}$$
+\begin{itemize}
+\item the quadratic loss is smaller than  $Var(\mu(\Theta)))$, the QL of the collective premium $m$, ( $m$ is the best estimator without experience data (looking only at collective data)
+\item the QL is smaller than $\frac{E[\sigma^2(\Theta)]}{w_{j\Sigma}}$, the QL of $\bar{X}_{j\Sigma}$, which is the best estimator without collective data (looking only at experience data)
+    \item The credibility estimator here is the best linear  estimator (QL criterion), given experience and collective data
+\end{itemize}
+
+\end{frame}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{If $s^2$ and $a$ are known but $m$ has to be estimated}
+
+$$\alert{P_{j,T+1}^{cred}=z_j \bar{X}_{j\Sigma}+(1-z_j)\widehat{m}=\widehat{m}+z_j(\bar{X}_{j\Sigma}-\widehat{m})},$$
+where
+$$\widehat{m}  =  \sum_{j=1}^J\frac{z_j}{z_\Sigma}\bar{X}_{j\Sigma}, \;\;\; z_\Sigma  =  \sum_{j=1}^J z_j$$
+
+Remarks:
+\begin{itemize}
+\item it can be shown that $\widehat{m}$ is a better estimator of $m$ than $\bar{X}_{\Sigma\Sigma}$
+
+\item Quadratic loss: $$E[(\widehat{m}+z_j(\bar{X}_{j\Sigma}-\widehat{m})-\mu(\theta_j))^2]=a(1-z_j)\left(1+\frac{1-z_j}{z_\Sigma}\right)$$
+
+\item This makes sense- in an \alert{non-i.i.d} sample, the weighted average where the weights are inversely proportional to the variances is BLUE. 
+
+%\item Balance property: $$\sum_{j,t}w_{jt}P_{j,T+1}^{cred}=\sum_j w_{j\Sigma}P_{j,T+1}^{cred}=\sum_{j,t}w_{jt} X_{jt}$$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{If $m$, $s^2$ and $a$ have to be estimated}
+
+$$\alert{P_{j,T+1}^{cred}=\widehat{z_j} \bar{X}_{j\Sigma}+(1-\widehat{z_j})\widehat{m}=\widehat{m}+\widehat{z_j}(\bar{X}_{j\Sigma}-\widehat{m})},$$
+
+Where we use the following unbiased (weighted) sample statistics:
+
+\begin{eqnarray*}
+\widehat{z_j}  &=&  \frac{w_{j\Sigma}}{w_{j\Sigma}+\frac{\hat{s}^2}{\hat{a}}} \\
+\hat{s}^2 & = & \frac{1}{J} \sum_{j=1}^J \hat{s}_{j}^2 = \frac{1}{J} \sum_{j=1}^J \left(\frac{1}{T-1} \sum_{t=1}^T w_{jt} (X_{jt}-\bar{X}_{j\Sigma})^2\right) \\
+\hat{a} & = & \frac{w_{\Sigma\Sigma}}{w_{\Sigma\Sigma}^2-\sum_{j=1}^J w_{j\Sigma}^2} \left\{ \sum_{j=1}^J w_{j\Sigma}(\bar{X}_{j\Sigma}-\bar{X}_{\Sigma\Sigma})^2-(J-1)\hat{s}^2\right\}
+\end{eqnarray*}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Numerical Example}
+Past claims data on a portfolio of two groups of policyholders are given below:
+\begin{center}
+\begin{tabular}{lcrrrr}
+\hline
+&  & \multicolumn{4}{c}{Year} \\
+& Group & 1 & 2 & 3 & 4 \\ \hline
+%&  &  &  &  &  \\
+Total Claim Amount & $1$ & $8000$ & $11,000$ & $15,000$ & $-$ \\
+Number in Group &  & $40$ & $50$ & $70$ & $75$ \\
+%&  &  &  &  &  \\
+Total Claim Amount & $2$ & $20,000$ & $24,000$ & $19,000$ & $-$ \\
+Number in Group &  & $100$ & $120$ & $115$ & $95$ \\ \hline
+\end{tabular}
+\end{center}
+Estimate the B\"uhlmann-Straub credibility premium to be charged in year 4 for each group of policyholder.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+
+\end{frame}
+
+
+\end{document}

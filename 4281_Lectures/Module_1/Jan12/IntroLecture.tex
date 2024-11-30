@@ -1,0 +1,424 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Intro to the course and start of Module 1} \\
+    \vspace{1cm}
+    {\large  January 12, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction to this course}
+\begin{frame}{The story so far...}
+
+For those who took Math 4280 you essentially studied the following problem: 
+\vfill
+\begin{center}
+\fbox{\textbf{How to compute $\rho[L]$?}}
+\end{center}
+\vfill
+Where:
+\begin{itemize}
+
+\item $\rho$ is some (potentially) coherent risk measure e.g. ES/TCE/CVaR, etc...
+
+\item $L$ is some random variable representing a loss.
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Some Questions}
+
+Q1: What do you do when $L$ is equal to a sum of smaller RVs?
+
+\vfill
+
+Q2: How do you introduce \textbf{time} to this model?
+
+\vfill
+
+Q3: How do I estimate the parameters of the model for $L$...if I don't have a nice heterogeneous sample?
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Some Questions}
+
+Q1: What do you do when $L$ is equal to a sum of smaller RVs? \\
+\color{red}$\Rightarrow$  Module 1: Aggregate Loss Models
+\vfill
+\color{black}Q2: How do you introduce \textbf{time} to this model? \\
+\color{red}$\Rightarrow$  Module 2: Ruin Theory
+\vfill
+
+
+\color{black} Q3: How do I estimate the parameters of the model for $L$...if I don't have a nice heterogeneous sample? \\
+\color{red}$\Rightarrow$  Module 3: Credibility 
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Start of  Module 1: Intro to Aggregate Loss Models}
+\begin{frame}{Models for aggregate losses}
+  A portfolio of insurance contracts or an insurance contract will potentially experience a sequence of losses:
+  \vfill
+  $$X_1, X_2, X_3, \ldots$$
+  \vfill
+  We are interested in the aggregate sum $S$ of these losses over a certain period of time.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Assumptions going forward}
+\begin{itemize}
+    
+    \item How do losses relate to each other? 
+    \begin{itemize}
+    \item[$\hookrightarrow$] Assume independent $X_i$'s.
+    \end{itemize}
+    
+\vfill    
+    
+    \item When do these losses occur?
+    \begin{itemize}
+    \item[$\hookrightarrow$] Assume no time value of money i.e. short term models 
+    \end{itemize}
+  
+\vfill  
+  
+  \item How many losses will occur?
+    \begin{itemize}
+    \item[$\hookrightarrow$] if deterministic ($n$) $\longrightarrow$ individual risk model
+    \item[$\hookrightarrow$] if random ($N$) $\longrightarrow$ collective risk model
+    \end{itemize}
+
+
+
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Definition: The Individual Risk Model}
+
+The Individual Risk Model\footnote{Refer to Def. 9.2 in the loss model textbook}
+
+ $$S=X_{1}+\cdots +X_{n}=\sum_{i=1}^{n}X_{i},$$
+ 
+ 
+  \begin{itemize}
+  \item The random variables $X_{i}$, $i=1,2,...,n$, are assumed to be independent 
+  \item BUT they are not assumed to be identically distributed.
+  \item Typically the $X_i$'s have mass at $0$ (representing no loss/payment).
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Definition: The Collective Risk Model}
+In the Collective Risk Model, aggregate losses become
+$$S=X_{1}+\ldots +X_{\alert{N}}=\sum_{i=1}^{\alert{N}}X_{i}.$$
+This is a random sum. We make the following assumptions:
+\begin{itemize}
+\item $N$ is the number of claims
+\item $X_i$ is the amount of the $i$th claim
+\item the $X_i$'s are \alert{iid} with
+\begin{itemize}
+\item CDF $F(x)$
+\item P(D/M)F $f(x)$
+\item Moments exist and are finite!
+\end{itemize}
+\item the $X_i$'s and $N$ are mutually independent
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{How to compute $S$?}
+We will study methods to get probabilities about $S$:
+\vfill
+\begin{enumerate}
+
+  \item If possible we will get the true distribution of $S$ via:
+  
+    \begin{itemize}
+    \item Convolutions
+    \item Method of generating functions
+    \end{itemize}
+    \vfill
+  \item Otherwise we will approximate with the help of the moments of $S$
+  
+\end{enumerate}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Examples of The IRM vs CRM}
+
+\vspace{- 1 cm}
+
+A group life insurance contract where each employee has a different age, gender,
+and death benefit\footnote{ex 9.2 of the loss models book}.
+ 
+\vfill
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Examples of The IRM vs CRM}
+\vspace{- 1 cm}
+A reinsurance contract that pays when the annual total medical malpractice costs at a certain hospital exceeds a given amount.
+
+\vfill
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Examples of The IRM vs CRM}
+\vspace{- 1 cm}
+A dental policy on an individual pays for at most two checkups per year per family
+member. A single contract covers any size family at the same price.
+
+\vfill
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{An example for the collective Risk model}
+\vspace{- 1 cm}
+An insurable event has a 10\% probability of occurring and when it occurs results in a loss of \$5,000. Market research has indicated that consumers will pay at most \$550 to purchase insurance against this event. How many policies must a company sell in order to have a 95\% chance of making money (ignoring expenses)?\footnote{ex 9.1 of the loss models book}
+\vfill
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{An example for the collective Risk model}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{An example for the collective Risk model}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Generating Functions and Convolutions}
+\subsection{Generating Functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Probability Generating functions}
+  
+\begin{definition}[PGF]
+Given a discrete RV $X$. We define the Probability Generating Function(PGF) $p_{X}(t)$ as:
+
+$$p_{X}\left( t\right)=E\left[ t^{X}\right]  $$ 
+
+\end{definition}
+
+i.e:
+
+$$p_{X}\left( t\right)=Pr[X=x_0]t^{x_0}+\Pr[X=x_1] t^{x_1}+ \Pr[X=x_2]  t^{x_2} + \ldots$$
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Properties}
+  \begin{itemize}
+
+  \item There is a 1-1 relation between a distribution and its PGF.
+  \item If $X$ is an integer-valued random variable, then the PGF is
+    $$p_{X}\left( t\right)=E\left[ t^{X}\right] =\sum_{n=0}^\infty\Pr[X=n] t^n,$$
+    which is in fact the Taylor series of $p_{X}\left( t\right)$:
+
+$$\Pr[X=n]=\frac{\frac{d^n}{dt^n}p_{X}\left( t\right)|_{t=0}}{n!}$$.
+
+  \item If $X_i, i=1,\cdots,n$ are independent, then: $$\alert{p_{X_1+\cdots+X_n}\left( t\right)}=\alert{p_{X_1}\left( t\right)}\alert{p_{X_2}\left( t\right)}\cdots \alert{p_{X_n}\left( t\right)}$$
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Moment Generating functions}
+
+\begin{definition}[MGF]
+
+For a continous random variable $X$ we define the Moment Generating Function (MGF) as: 
+$$M_{X}\left( t\right)=E\left( e^{tX}\right)$$
+
+\end{definition}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Properties}
+  \begin{itemize}
+
+  \item There is a 1-1 relation between a distribution and its MGF.
+
+  \item Taylor Expansion:
+
+$$ M_{X}\left( t\right)=1+E[X] t+ E[X^2]  \frac{t^2}{2} +E[X^3] \frac{t^3}{6} + \ldots + E[X^k] \frac{t^k}{k!}+\ldots $$  
+  
+
+ and thus
+      $$E[X^k]=\left.\dfrac{d^{k}}{dt^{k}}m_{X}\left( t\right) \right|_{t=0}$$
+
+  \item If $X_i, i=1,\cdots,n$ are independent then: $$\alert{M_{X_1+\cdots+X_n}\left( t\right)}=\alert{M_{X_1}\left( t\right)}\alert{M_{X_2}\left( t\right)}\cdots \alert{M_{X_n}\left( t\right)}$$
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Why do we care?}
+
+\begin{itemize}
+  \item As we said there is a 1-1 relation between a distribution and its MGF or PGF.
+  \vfill
+  \item Sometimes, $m_S(t)$ or $p_S(t)$ can be recognised: this is the case for infinitely divisible distributions (Normal, Poisson, Inverse Gaussian, \ldots) and certain other distributions (Binomial, Negative binomial)
+  \vfill
+  \item Otherwise, $m_S(t)$ or $p_S(t)$ can be expanded \linebreak numerically to get moments and/or probabilities
+  \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\vspace{-2.5 cm}
+  \textbf{Example}
+  Consider a portfolio of 10 contracts. The losses $X_i$'s for these contracts are i.i.d. Poisson RVs with parameter 100.  Determine the distribution of $S$.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\vspace{-2.5 cm}
+\textbf{Example} Consider three independent RVs $X_1$, $X_2$, $X_3$. For $i=1,2,3$, $X_i$ has an exponential distribution and $E[X_i]=1/i$.
+  Derive the PDF of $S=X_1+X_2+X_3$ by recognition of the MGF of $S$.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Convolutions}
+\begin{frame}{Convolutions}
+\begin{itemize}
+
+\item The operation of computing the distribution of the sum of two independent random variables is called a \alert{convolution}. It is denoted by:
+
+
+$$F_{X+Y}=F_X*F_Y$$
+
+\vfill
+
+\item The result can then be convoluted with the distribution of another random variable:
+$$F_{X+Y+Z}=F_Z*F_{X+Y}$$
+\vfill
+\item And so on...(as we will see for $n$-fold convolutions)
+
+
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Formulas}
+
+Continuous case:
+   \begin{itemize}
+    \item CDF: $F_{X+Y}\left( s\right) =\int_{-\infty }^{\infty}F_{Y}\left( s-x\right) f_{X}\left( x\right) dx$
+    \item PDF: $f_{X+Y}\left( s\right) =\int_{-\infty }^{\infty}f_{Y}\left( s-x\right) f_{X}\left( x\right) dx$
+  \end{itemize}
+  
+\vfill  
+
+Discrete case:
+
+\begin{itemize}
+    \item CDF: $F_{X+Y}\left( s\right) =\sum_{x}F_{Y}\left( s-x\right)f_{X}\left( x\right) $
+    \item PMF: $f_{X+Y}\left( s\right) =\sum_{x}f_{Y}\left(s-x\right) f_{X}\left( x\right) $
+    \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$n$-fold convolutions}
+  For i.i.d. continuous random variables $X_i$ with a common CDF $F_X (x)$, the $n$-fold convolution of $F_X (x)$ is denoted by $F^{*n}_X (x)$: 
+  
+\begin{eqnarray*}
+    F^{*k}_{X}\left( x\right) &=& \int^{\infty}_{-\infty} F^{*(k-1)}_{X} \left(x-y\right) f_X (y) d y\\
+    &=& \int^{x}_{0} F^{*(k-1)}_{X} \left(x-y\right) f_X (y) d y \quad \mbox{if positive support}
+    \end{eqnarray*}
+     for $k = 1, 2, \ldots$ where:  
+     
+ 
+ 
+  $$F^{*0}_{X}\left( x\right) =
+    \left\{
+    \begin{aligned}
+    & 0 , & x < 0 \\
+    & 1 , & x \geq 0
+    \end{aligned}
+    \right.$$
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$n$-fold convolutions (Cont.)}
+Continuous case PDF for $k = 1, 2, \ldots$ :
+ 
+\begin{eqnarray*}
+    f^{*k}_{X}\left( x\right) &=& \int^{\infty}_{-\infty} f^{*(k-1)}_{X} \left(x-y\right) f_X (y) d y\\
+    &=& \int^{x}_{0} f^{*(k-1)}_{X} \left(x-y\right) f_X (y) d y \quad \mbox{if positive support}
+    \end{eqnarray*}
+    
+ 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$n$-fold convolutions (Cont.)}
+Discrete case:
+      \begin{itemize}
+    \item CDF:
+    \begin{eqnarray*}
+    F^{*k}_{X}\left( x\right) = \sum^{x}_{y = 0} F^{*(k-1)}_{X} \left(x-y\right) f_X (y) \ \mbox{for} \ x=0,1,\ldots, \ k = 2, 3, \ldots
+    \end{eqnarray*}
+    \item PMF:
+    \begin{eqnarray*}
+    f^{*k}_{X}\left( x\right) = \sum^{x}_{y = 0} f^{*(k-1)}_{X} \left(x-y\right) f_X (y) \ \mbox{for} \ x=0,1,\ldots, \ k = 2, 3, \ldots
+    \end{eqnarray*}
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Why?}
+\vspace{-3 cm}
+  \textbf{Exercise:} Show the convolution gives the distribution for the sum. 
+  
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

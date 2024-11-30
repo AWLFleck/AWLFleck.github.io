@@ -1,0 +1,91 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Andrew Fleck}
+
+\usepackage{mdframed}
+
+\begin{document}
+
+\begin{center}
+{\Large \underline{Solution to Book \# 9.72}} 
+\end{center}
+
+My apologies everyone- I realize I had the wrong slides open and that may have caused undue confusion when working through this problem. 
+
+The slide in the lecture was referring to the theorem that a sum of compound Poisson's is itself compound Poisson. Rather I meant to show Slide 9 from Jan 28- the theorem underpinning the sparse vector algorithm. That is the following:
+
+\begin{mdframed}
+If $S\sim\text{compound Poisson}(\lambda,\mbox{Pr} (X = x_i) =\pi_i)$, $i=1,\ldots,m$ then
+
+
+$$S=x_1N_1+\ldots+x_mN_m,$$
+
+where the $N_i$'s
+\begin{itemize}
+\item represent the number of claims of amount $x_i$
+\item are mutually independent
+\item are Poisson$(\lambda_i=\lambda \pi_i)$
+\end{itemize}
+\end{mdframed}
+
+Now you don't \textit{need} this to solve it like I said. You can go about it in the top down way I mentioned in class. I'll present both solutions though. As a side note. I know the solutions manual is out there, but this is generally why I don't like using it for anything but a numerical check of the answer. It can give the wrong impression there is only one answer.  \\
+
+
+\noindent\textbf{Top Down Solution}:
+
+Consider that: 
+
+$$ E[N] = 500(0.01) + 500(0.02) = 15 $$
+
+Which means if S is modelled as a compound Poisson: 
+
+$$ E[S] = E[N]E[X] = 15( (x)p_1 + (2x)p_2 ) $$
+
+Where $x$ and $2x$ are the severities of class 1 and class 2 that occur with frequency $p_1$ and $p_2$ respectively. So how do we find $p_i$?
+
+Note that:
+
+$$ p_1 = P(Class1 | Claim) = \frac{ P(Claim|Class1) }{ P(Claim) } P(Class1) $$
+
+If:
+
+\begin{itemize}
+
+\item $P(Claim|Class1) =0.01$ 
+
+\item $P(Class1)=500/1000 = 0.5$
+
+\item $P(Claim) = P(Claim|Class1)P(Class1) + P(Claim|Class2)P(Class2) = (0.01)(0.5) + (0.02)(0.5)=0.015$
+
+\end{itemize}
+
+Then:
+
+$$p_1 = \frac{0.01}{0.015} 0.5 = 1/3$$
+
+And this is intuitive as it's the relative frequency we see in the table. Finally:
+
+$$Var(S) = 15 E[X^2] = 15( (1/3) x^2 + (2/3)(2x)^2 )$$
+
+And we can solve for $x$ given the variance. \\
+
+\noindent\textbf{Bottom Up Solution}: We have that:
+
+$$ S = (500 \mathbf{1}_1) x +  (500 \mathbf{1}_2) 2x$$
+
+where $\mathbf{1}_1$ is the indicator of a claim in class one i.e. $E[\mathbf{1}_1]=0.01$.
+
+We know from the theorem for the sparse vector algorithm that if $S$ is compound Poisson we can match $(500 \mathbf{1}_1)$ with $N_1 \sim Poi(p_1 \lambda)$ and  $(500 \mathbf{1}_2)$ with $N_2 \sim Poi(p_2 \lambda)$. If $E[500 \mathbf{1}_1]=5$ and $E[500 \mathbf{1}_2]=10$ then:
+
+\begin{align*}
+p_1 \lambda &= 5 \\
+p_2 \lambda &=10 \\
+\end{align*}
+
+Solving gives $p_1 =1/3$, $p_2=2/3$ and $\lambda=15$ as desired.
+
+\end{document}

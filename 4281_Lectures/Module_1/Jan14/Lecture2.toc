@@ -1,0 +1,3 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Generating Functions and Convolutions (cont.)}{3}{0}{1}
+\beamer@sectionintoc {2}{Frequency and Severity in the IRM}{15}{0}{2}

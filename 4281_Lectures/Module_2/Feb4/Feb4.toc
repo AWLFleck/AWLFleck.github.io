@@ -1,0 +1,6 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Stochastic Processes (cont)}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{ The Cram\'er-Lundberg process }{4}{0}{1}
+\beamer@sectionintoc {2}{Ruin Theory \\ (with a preamble on decision theory)}{8}{0}{2}
+\beamer@subsectionintoc {2}{1}{Talking about decision theory}{9}{0}{2}
+\beamer@subsectionintoc {2}{2}{The probability of ruin}{17}{0}{2}

@@ -1,0 +1,409 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Module 1 (cont.)} \\
+    \vspace{1cm}
+    {\large  January 21, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Insurance in Practice}
+
+\begin{itemize}
+
+\item We now have enough "tools in our belt" to look at some more applied insurance problems involving the IRM. 
+
+\vfill
+
+\item Today we will look at policy transforms and Reinsurance.
+
+\vfill
+
+\item Next week we will dive into the CRM again.
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Policy Transforms }
+\begin{frame}{The Story So Far...} 
+
+\begin{itemize}
+
+\item So far we have looked at how to model insurance losses.
+
+\vfill
+
+\item Often this is \textit{exogenous} i.e. outside of our control.
+
+\vfill
+
+\item How can we control the cost/variably of claim losses?
+
+\end{itemize}
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Deductible and Policy Limit}
+
+  One way to control the cost (and variability) of individual claim losses is to introduce deductibles and policy limits.
+  \vfill
+  \begin{itemize}
+  \item \alert{Deductible $d$}: the insurer starts paying when claim amounts exceed the deductible $d$
+  \vfill
+  \item \alert{Limit $L$}: the insurer pays up to the limit $L$.
+  \end{itemize}
+  \vfill
+  If we denote the damage random variable by $D$, then if a claim occurs the insurer is liable for
+  \begin{equation*}
+    B=\min \left[ \max \left( D-d,0\right) ,L\right] \text{.}
+  \end{equation*}
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Numerical Example 1}
+  Consider an automobile insurance where:
+  \begin{itemize}
+  \item the policyholder has a probability $0.10$ of getting in an accident
+  \item If an accident occurs, the damage to the vehicle is uniformly distributed between $0$ and $2\,500$.
+  \item The policy has a deductible amount of $500$ and a policy limit of $1500$.
+  \end{itemize}
+  \vfill  
+  
+  Find:
+  \begin{enumerate}
+  \item The CDF and the probability density/mass function of $X$, the claim amount the insurer is liable for.
+  \item The expected value of $X$.
+  \end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Numerical Example}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Numerical Example}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Numerical Example}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{ Reinsurance }
+\begin{frame}{Insurance for Insurance Companies?}
+
+\includegraphics[scale=.5]{ClassMeme.jpeg}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Insurance for Insurance Companies?}
+
+Reinsurance is a contract wherin one company (the reinsurer) takes on the catastrohic risks of another insurer e.g.:
+
+\begin{itemize}
+\item Earthquakes and other disasters 
+
+\item Industrial accidents 
+
+\item Terrorism/war/riots
+
+\item ....Aliens? (some losses are \textbf{very} difficult to anticipate)
+
+\end{itemize}
+\vfill
+It is \alert{risk transfer} from an insurer (the direct writer) to a reinsurer: swap of deterministic against random. The risk that the insurer keeps is called the \alert{retention}.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+
+In general there are two broad categories of Reinsurance "Treaties":
+\vfill
+\begin{itemize}
+
+\item Random walk type (e.g. proportional, excess of loss, stop-loss). 
+
+\vfill
+
+\item Extreme value type (e.g. Largest claim, Excédent du coût moyen relatif or ECOMOR).
+
+\end{itemize}
+\vfill
+It is also worth noting the existence of things like \textit{Catastrophe Bonds}. 
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Reinsurance}
+
+  \begin{itemize}
+  \item Proportional
+    \begin{itemize}
+    \item quota share: the proportion is the same for all risks
+    \item surplus: the proportion can vary from risk to risk
+    \end{itemize}
+    \vfill
+  \item Non-Proportional
+    \begin{itemize}
+    \item (individual) excess of loss: on each individual loss ($X_i$)
+    \item stop loss: on the aggregate loss ($S$)
+    \end{itemize}
+    \vfill
+  \item Cheap (reinsurance premium is the expected value), or \linebreak non cheap (reinsurance premium is loaded)
+  %\item CAT bonds and the like...
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proportional reinsurance}
+  The \alert{retained proportion $\alpha$} defines who pays what:
+  \begin{itemize}
+  \item the insurer pays $Y=\alpha X$
+  \item the reinsurer pays $Z=(1-\alpha) X$
+  \end{itemize}
+  This is nothing else but a change of scale and we have
+  $$\mu_Y=\alpha \mu_X,\;\;\;\sigma^2_Y=\alpha^2\sigma^2_X,\;\;\;\gamma_Y=\gamma_X.$$
+  
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proportional reinsurance}
+In some cases it suffices to adapt the scale parameter. For example if $X$ is exponential with parameter $\beta$:
+
+\vfill
+
+ $$\Pr[Y\le y]=\Pr[\alpha X \le y]=\Pr[X \le y/\alpha] = 1-e^{-\beta y / \alpha}$$
+  
+\vfill   
+   
+    ...and thus $Y$ is exponential with parameter $\beta/\alpha$.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Nonproportional reinsurance}
+  \textbf{(Individual) Excess of Loss reinsurance} (EoL):
+  \begin{itemize}
+  \item For each individual loss $X$, the reinsurer pays the excess over a \alert{retention (excess point) $d$}
+    \begin{itemize}
+    \item the insurer pays $Y=\min(X,d)$
+    \item the reinsurer pays $Z=(X-d)_+$
+    \end{itemize}
+  %  \item $E[(X-d)_+]$ is called \textbf{stop-loss premium}.
+  \vfill
+  \item in EoL, the reinsurer may limit his payments to an amount $L$. In that case
+    \begin{itemize}
+    \item the insurer pays $Y=\min(X,d)+(X-L-d)_+$
+    \item the reinsurer pays $Z=\min\left\{(X-d)_+,L\right\}$
+    \end{itemize}
+  \end{itemize}
+ 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Nonproportional reinsurance}
+   \textbf{Stop loss reinsurance:} For aggregate loss $S$, the reinsurer pays the excess over a \alert{retention (excess point) $d$}
+    \begin{itemize}
+    \item the insurer pays $Y=\min(S,d)$
+    \item the reinsurer pays $Z=(S-d)_+$
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A useful identity}
+   Note that
+   $$\min(X,c)=X-(X-c)_+$$
+   and thus
+   $$E[\min(X,c)]=E[X]-E[(X-c)_+].$$
+   
+\vfill   
+   
+   The amount $E[(X-c)_+]$      
+   \begin{itemize}
+   \item is commonly called "stop loss premium" with retention $c$.
+   \item is identical to the expected payoff of a call with strike price $c$, and thus results from financial mathematics can sometimes be directly used (and vice versa).
+   \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Reinsurance premium}
+   \begin{itemize}
+   \item Cheap reinsurance: Reinsurance premium equals to the expected value of random losses covered by the reinsurer
+   
+\vfill   
+   
+   \item Non-cheap reinsurance: Reinsurance premium equals to the expected value of random losses covered by the reinsurer plus a loading
+   \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\textbf{Example} A life insurance company covers 16000 lives for 1-year term life insurance in amounts shown below\\
+
+\begin{table}[]
+\begin{tabular}{|c|c|}
+\hline
+Benefit Amt (in 10,000s) & No. of lives covered \\ \hline
+1                        & 8000                 \\ \hline
+2                        & 3500                 \\ \hline
+3                        & 2500                 \\ \hline
+5                        & 1500                 \\ \hline
+10                       & 500                  \\ \hline
+\end{tabular}
+\end{table}
+
+The probability of a claim $q$ for each of the 16000 lives is 0.02. The excess of loss reinsurance with retention limit 30000 is available at a cost of 0.025 per dollar of coverage. Use the Normal approximation method to calculate the probability that the total cost will exceed $8250000$.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\vspace{- 2.5 cm}
+
+The portfolio of retained business is given by:
+
+\begin{table}[]
+\begin{tabular}{|c|c|}
+\hline
+Benefit Amt (in 10,000s) & No. of lives covered \\ \hline
+1                        & 8000                 \\ \hline
+2                        & 3500                 \\ \hline
+3                        & 4500                 \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Stop loss reinsurance on the aggregate loss}
+  \begin{itemize}
+  \item For a stop-loss contract with deductible $d$, the amount paid by the reinsurer to the ceding insurer is
+    $I_d=(S-d)_+=\begin{cases}
+      0&S\le d\\
+      S-d& S>d
+    \end{cases}
+    $\\
+    where $S$ is the aggregate claims.
+  \item Then
+    we have
+    \begin{itemize}
+    \item If $S$ is continuous positive RV with pdf $f_S(x)$, then
+$$E[I_d]=\int_d^\infty (x-d)f_S(x)dx=\int_d^\infty [1-F_S(x)]dx$$
+    \item If $S$ is discrete positive RV with possible values $x_k$ with PMF $f_S(x_k)$ for $k=0,1,\cdots$, then
+    $$E[I_d]=\sum_{k:x_k\ge d} (x_k-d)f_S(x_k)$$
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aside: The Darth Vader Rule}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aside: The Darth Vader Rule}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Example}
+  Calculate $E[I_d]$ if $S$ is Exponential with mean $1/\beta$.
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Stop loss reinsurance - recursive formulas }
+  If the possible values of $S$
+  are non-negative integers, then\\
+
+  First moment:
+  \begin{itemize}
+  \item if $d$ is an integer
+    $$E[I_{d+1}]=E[I_d]-[1-F_S(d)]\text{ with }E[I_0]=E[S]$$
+  \item if $d$ is not an integer
+    $$E[I_d]=E[I_{\lfloor d \rfloor}]-(d-\lfloor d \rfloor)[1-F_S(\lfloor d \rfloor)],$$
+    where $\lfloor d \rfloor$ is the integer part of $d$.
+  \end{itemize}
+  Second moment $E[I_d^2]=E[(S-d)_+^2]$:
+  $$E[I_d^2]=E[I_{d-1}^2]-2E[I_{d-1}]+[1-F_S(d-1)]\text{ with }E[I_0^2]=E[S^2].$$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{This seems strange...what's going on?}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Solution to Convolution ex on Jan14}
+
+
+\begin{tabular}{ccccccc}
+      \hline $x$ & $f_{1}\left( x\right) $ & $f_{2}\left( x\right) $ &
+      $f_{1+2}\left(
+        x\right) $ & $f_{3}\left( x\right) $ & $f_{1+2+3}\left( x\right) $ & $%
+      F_{1+2+3}\left( x\right) $ \\ \hline
+      $0$ & $1/4$ & $1/2$ & $1/8$ & $1/4$ & $1/32$ & $1/32$ \\
+      $1$ & $1/2$ & $0$ & $2/8$ & $0$ & $2/32$ & $3/32$ \\
+      $2$ & $1/4$ & $1/2$ & $2/8$ & $1/2$ & $4/32$ & $7/32$ \\
+      $3$ & $0$ & $0$ & $2/8$ & $0$ & $6/32$ & $13/32$ \\
+      $4$ & $0$ & $0$ & $1/8$ & $1/4$ & $6/32$ & $19/32$ \\
+      $5$ & $0$ & $0$ & $0$ & $0$ & $6/32$ & $25/32$ \\
+      $6$ & $0$ & $0$ & $0$ & $0$ & $4/32$ & $29/32$ \\
+      $7$ & $0$ & $0$ & $0$ & $0$ & $2/32$ & $31/32$ \\
+      $8$ & $0$ & $0$ & $0$ & $0$ & $1/32$ & $32/32$ \\ \hline
+    \end{tabular}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Worked Example}
+  For the distribution $F_{1+2+3}$ derived earlier in the lecture (refer to Page 11)
+  we have $E[S]=4=128/32$ and $E[S^2]=19.5=624/32$ and thus
+  \begin{center}
+    \small
+    \begin{tabular}{c|ccccc}
+      $d$ & $f_{1+2+3}(d)$ & $F_{1+2+3}(d)$ & $E[I_d]$ & $E[I_d^2]$ & $Var((X-d)_+)$ \\ \hline
+      $0$ & $1/32$ & $1/32$   & 128/32 & 624/32 & 3.500 \\
+      $1$ & $2/32$ & $3/32$   & 97/32   & 399/32 & 3.280 \\
+      $2$ & $4/32$ & $7/32$   & 68/32   & 234/32 & 2.797 \\
+      $3$ & $6/32$ & $13/32$ & 43/32   & 123/32 & 2.038 \\
+      $4$ & $6/32$ & $19/32$ & 24/32   & 56/32    & 1.118 \\
+      $5$ & $6/32$ & $25/32$ & 11/32   & 21/32    & 0.538 \\
+      $6$ & $4/32$ & $29/32$ & 4/32     & 6/32      & 0.172 \\
+      $7$ & $2/32$ & $31/32$ & 1/32     & 1/32      & 0.030 \\
+      $8$& $1/32$  & $32/32$ & 0           & 0           & 0.000 \\
+    \end{tabular}
+  \end{center}
+  $$E[I_{2.6}]=E[I_2]-(2.6-2)\cdot(1-F_{1+2+3}(2))=\frac{68}{32}-0.6\times (1-\frac{7}{32})=\frac{53}{32}.$$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

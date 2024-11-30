@@ -1,0 +1,473 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Start of Module 3: Credibility Theory} \\
+    \vspace{1cm}
+    {\large  March 16th, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+\begin{frame}{Recall from the first lecture}
+
+Q1: What do you do when $L$ is equal to a sum of smaller RVs? \\
+\color{red}$\Rightarrow$  Module 1: Aggregate Loss Models
+\vfill
+\color{black}Q2: How do you introduce \textbf{time} to this model? \\
+\color{red}$\Rightarrow$  Module 2: Ruin Theory
+\vfill
+
+
+\color{black} Q3: How do I estimate the parameters of the model for $L$...if I don't have a nice heterogeneous sample? \\
+\color{red}$\Rightarrow$  Module 3: Credibility 
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Simple/Classical Example: Auto Insurance}
+
+Say I am insuring auto losses. I want the net premium for an individual policy but...
+
+\begin{itemize}
+
+\item Lots of ways to segment drivers e.g. age, location, car make/model, education, climate etc...
+
+\vfill
+
+\item Every relevant subdivision creates smaller and smaller sub-samples. 
+
+\vfill
+
+
+\item Very quickly I can start to run into a lack of data on each sub-sample. Not advisable to estimate using simple mean of sub-sample.
+
+\vfill
+
+
+\item How can I incorporate data from the total sample of all drivers?
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Credibility Theory}
+
+\begin{itemize}
+\item Need to set a premium for different groups of insurance contracts when:
+\begin{enumerate}
+\item there are reasons to believe that groups have different risks (heterogeneous), but there is only limited \alert{experience} (data) for each group of contracts,
+
+
+\item But there is quite a lot of experience when combined with other contracts which are more or less related.
+\end{enumerate}
+
+\vfill
+
+
+\item Claim amounts $X_{jt}$ are known for group (or individual) $j=1,2,...,J$\ and time periods $t=1,2,...,T$.
+
+\vfill
+
+
+\item How to find the optimal estimators of claims for the group for next period.
+
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Two extreme approaches}
+
+Premium for group $j$ can be based on two extreme positions:
+
+\vfill
+
+
+
+\begin{enumerate}
+
+
+\item Use overall mean $\overline{X}$ of the data [makes sense only if the portfolio is \textit{homogeneous}].
+
+
+\vfill
+
+
+\item Use the average $\overline{X}_{j}$ in group $j$ [makes sense only if the group is sufficiently large and arguably different from other groups].
+
+\end{enumerate}
+
+\vfill
+
+Can we combine these in some way?
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Reconciling these approaches} 
+ 
+\begin{itemize}
+ 
+\item Around 1900, American actuaries got the idea to use a weighted average of these extremes as a compromise:
+$$\text{Credibility Premium }=z_{j}\overline{X}_{j}+\left(1-z_{j}\right) \overline{X}\text{,}$$
+where $z_{j}$ is called the \alert{credibility factor} representing the weight attached to individual data.
+
+\vfill
+
+
+\item The credibility weight will be a value between $0$ and $1$, with it being close to 1 if:
+
+\begin{itemize}
+\item group $j$ is large enough; and/or
+
+\item claims for the group are very predictable; and/or
+
+\item the variability between the groups is very large.
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The problem}
+
+Assume:
+\begin{itemize}
+\item every risk $j$ in the collective is characterized by its individual risk profile \alert{$\theta_j \in \Theta$} that does not change over time and that we can't observe.
+\item $\Theta$ may be either qualitative (e.g. good/bad) or quantitative (e.g. average number of accidents per year).
+\item we have $T$ observations $X_{j1},\ldots,X_{jT}$
+\end{itemize}
+We want to estimate
+$$\mu(\theta_j)=E\left[X_{j,T+1}|\theta_j\right]$$
+but $\theta_j$ is unknown to the insurer...
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Two random variables}
+
+\begin{itemize}
+\item It is obvious that the losses $X_{j1},X_{j2},\ldots$ are random and depend on $\theta_j$.
+
+\vfill
+
+
+\item Given $\theta_j$, the losses $X_{j1},X_{j2},\ldots$ are independent.
+
+
+\vfill
+
+
+
+\item Since the risk profile can't be observed, we will also model it as random\footnote{Another interpretation of probability i.e. a measure of belief or certainty}.
+
+
+\vfill
+
+
+
+\item Thus $\mu(\theta)$  becomes a random variable we will use \alert{Bayesian} techniques to estimate.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Crash Course on Bayesian Estimation}
+\begin{frame}{First we define some notation}
+
+\begin{itemize}
+
+\item The prior distribution is denoted by a CDF $\Pi(\theta)$ and pdf $\pi(\theta)$. 
+
+\item The likelihood function has CDF $F(x|\theta)$ and pdf $f(x|\theta)$. 
+
+\item The probability of the data has CDF $F(x)$ and pdf $f(x)$.
+
+\item The posterior distribution has CDF $\Pi(\theta|x)$ and pdf $\pi(\theta|x)$. 
+
+\item And they are all related through Bayes' Theorem: 
+
+\begin{align*}
+\pi(\theta | x)&=\frac {f(x\mid \theta )\pi(\theta )}{f(x)}\\
+&=\frac {f(x\mid \theta )\pi(\theta )}{\int _{\phi}f(x|\phi)\,d\phi}\\
+&=\frac {f(x\mid \theta )\pi(\theta )}{\int _{\phi}f(x\mid \phi)\pi(\phi) d\phi}
+\end{align*}
+
+
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Estimation}
+
+Let $\theta$ be a variable we want to estimate
+\begin{itemize}
+\item we don't know the value of $\theta$
+\item it is drawn out of a population distributed like $\Pi(\theta)$
+\end{itemize}
+
+\vfill
+
+We want to create an estimator $\hat{\delta}$ of $\theta$.
+\begin{itemize}
+\item \alert{What criteria should it respect?}
+\item For example: unbiased
+\item and..?
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The concept of loss function}
+
+Estimation error:
+\begin{itemize}
+\item when we estimate something, we (almost surely) make an error
+\vfill
+
+\item of course, we want to minimize that error
+\vfill
+
+\item are there errors we dislike more than others?
+\vfill
+
+\item (for example it might be better to overestimate a loss than underestimate it)
+\end{itemize}
+\vfill
+
+\alert{$\Rightarrow$ The loss function $L(\theta,\hat{\delta})$}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Loss functions}
+
+The loss function $L(\theta,\hat{\delta})$:
+\vfill
+
+\begin{itemize}
+\item is a function of $\theta$ and $\hat{\delta}$
+\vfill
+
+\item reflects the weight we want to give to estimation errors
+\vfill
+
+\item is the function we want to minimize
+\vfill
+
+\item minimization (of its expectation) yields the associated estimator
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The absolute error (or deviation) loss function}
+The function:
+\begin{equation}
+L(\theta,\hat{\theta})=|\theta-\hat{\delta}|
+\end{equation}
+
+The idea:
+\begin{itemize}
+\item the importance of the error is proportional to the distance between $\theta$ and $\hat{\delta}$
+\item positive errors and negative errors have the same weight (symmetrical)
+\end{itemize}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The quadratic (MSE) loss function}
+The function:
+\begin{equation}
+L(\theta,\hat{\theta})=(\theta-\hat{\delta})^2
+\end{equation}
+
+The idea:
+\begin{itemize}
+\item the farther $\hat{\delta}$ is from $\theta$, the (exponentially) worse it is
+\item positive errors and negative errors of identical magnitude have the same weight (symmetrical)
+\end{itemize}
+
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Almost constant loss functions}
+The function:
+\begin{equation}
+L(\theta,\hat{\theta})= \left\{
+\begin{array}{cc}
+c & \hat{\delta} \neq \theta \\
+0 & \hat{\delta} = \theta
+\end{array}
+\right.
+\end{equation}
+
+The idea:
+\begin{itemize}
+\item the result of the estimation is binary: right or wrong
+\item if it is wrong, the cost is $c$
+\end{itemize}
+
+When $c=1$, the above loss function is also called an \textbf{all-or-nothing} loss function.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Other loss functions}
+\begin{itemize}
+\item any loss function could be used
+\item the only restriction is the creativity of the user
+\item (of course, some restrictions just make sense -- such as $L(\theta,\hat{\delta})$ positive for all $\theta$)
+\end{itemize}
+For example,
+\begin{equation}
+L(\theta,\hat{\delta})= \left\{
+\begin{array}{cc}
+\alpha (\hat{\delta}-\theta) & \hat{\delta} > \theta \\
+\beta (\theta-\hat{\delta}) & \hat{\delta} < \theta
+\end{array}
+\right.
+\end{equation}
+\begin{itemize}
+\item the cost is $\alpha$ times the error if $\theta$ is overestimated and $\beta$ times the error if $\theta$ is underestimated
+\item this is a generalization of the absolute error loss function, which is the case $\alpha=\beta=1$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Risk Function}
+
+
+\begin{itemize}
+\item $L(\theta,\hat{\delta}(\mathbf{x}))$, the loss function, if $\theta$ is the "true" parameter and $\hat{\delta}(\mathbf{x})$ is the value taken by the estimator if $\mathbf{X}$ is observed
+
+\vfill
+
+\item The \alert{risk function} of the estimator $\hat{g}$
+\begin{equation}\label{E_RF}
+R_{\hat{\delta}}(\theta) \mathrel{\mathop:}=  E_{\mathbf{X}|\theta} [ L(\theta,\hat{\delta}(\mathbf{X}))]=\int_{\mathbb{R}^n} L(\theta,\hat{\delta}(\mathbf{x})) \;\text{d} F_{X|\theta}(\mathbf{x}|\theta)
+\end{equation}
+
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Frequentist Risk function}
+
+
+\vspace{-3 cm}
+\begin{itemize}
+
+\item In the case of frequentist inference we use the empirical distribution for our likelihood.
+
+\item In the case of the MSE we have:
+
+\end{itemize}
+
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bayes Risk}
+
+However in the Bayesian case we augment our risk function with our prior:
+
+\begin{eqnarray}
+R(\hat{\delta}) &=& \int_\Theta R_{\hat{\delta}}(\theta) \;\text{d}\Pi(\theta)
+	 = \int_\Theta E_{X|\theta}[L(\theta,\hat{\delta})] \;\text{d}\Pi(\theta) \nonumber \\
+	 &=& \int_\Theta \int_{\mathbb{R}^n} L(\theta,\hat{\delta}(\mathbf{x})) \;\text{d}F(\alert{\mathbf{x}|\theta}) \;\text{d}\Pi(\theta)  \nonumber \\
+ 	 &=& \int_{\mathbb{R}^n} \left[ \int_\Theta L(\theta,\hat{\delta}(\mathbf{x})) \;\text{d}\Pi(\alert{\theta|x}) \right] \;\text{d}F(\alert{\mathbf{x}}). \label{E_BR2}
+\end{eqnarray}
+
+Where in the last step we apply Bayes theorem to obtain the quantity in brackets. 
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bayes estimator}
+
+The Bayes estimator is defined such that Bayes risk $R(\hat{\delta})$ is minimal:
+\begin{equation}
+\widetilde{\delta}\; : \; \hat{\delta} \:|\: R(\hat{\delta}) \;\text{is minimal}
+\end{equation}
+From \eqref{E_BR2} it follows that given $\mathbf{X}=\mathbf{x}$, \alert{$\widetilde{g(\mathbf{x})}$ takes the value which minimizes the error}
+$$\int_\Theta L(\theta,\hat{\delta}(\mathbf{x})) \;\text{d}\Pi(\theta|x).$$
+In other words,
+\begin{columns}
+\column{0.9\textwidth}
+\begin{itemize}
+\item $\widetilde{\delta(\mathbf{x})}$ is the estimator which minimizes Bayes risk
+     \item $\widetilde{\delta(\mathbf{x})}$ is the estimator which minimizes the expected loss with respect to the posterior distribution of $\theta$
+\item $\widetilde{\delta(\mathbf{x})}$ is \alert{"the best" estimator} with respect to the loss function
+\end{itemize}
+\column{.1\textwidth}
+\end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\textbf{Example 1} The Bayes estimator under the quadratic loss is the
+mean of the posterior distribution, i.e.
+$$\widetilde{\delta(\mathbf{x})}= \int \theta d\Pi(\theta|x)=E[\theta|x]$$
+\bigskip
+\textbf{Example 2} The Bayes estimator under the absolute error  loss is the median of the posterior distribution, i.e.
+$$ \widetilde{\delta(\mathbf{x})}=\theta\ | \  \Pi(\theta|x)=0.5$$
+
+
+\bigskip
+\textbf{Example 3} The Bayes estimator under the all-or-nothing loss is the mode of the posterior distribution, i.e.
+$$ \widetilde{\delta(\mathbf{x})}=\theta\ | \ \Pi(\theta|x) \ \mbox{is maximal}$$
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Exercise}
+Prove example 1. In other words, show that  the Bayes estimator under the quadratic loss is the mean of the posterior distribution.\\
+\vspace{5cm}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bayes estimate for the mean}
+\vspace{- 3 cm}
+Assume that: 
+\begin{itemize}
+\item $\theta \sim \mathcal{N}{(\mu, \tau)}$
+
+\item  $ x|\theta \sim \mathcal{N}{(\theta, \sigma)}$
+
+\item What is the Bayes estimate for the mean given some sample of $x_i$ for $i=1...n$?
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+
+\end{document}

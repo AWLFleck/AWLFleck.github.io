@@ -1,0 +1,332 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Module 1 (cont.)} \\
+    \vspace{1cm}
+    {\large  January 26, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+
+\begin{itemize}
+
+\item Last week we looked at some more applied insurance problems with the IRM.
+
+\vfill
+
+\item Today we will return to the CRM.
+
+\vfill 
+
+\item The mathematics of the CRM are slightly more complicated. 
+
+\vfill
+
+\item This will also flow nicely into Module 2.
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Collective Risk Model }
+\begin{frame}{Different ways of separating frequency and severity}
+
+
+The IRM - deterministic $n$
+\begin{itemize}
+\item main focus on the claims of \alert{individual policies}
+
+ (whose number is a priori known)
+\item $\longrightarrow$ \alert{Individual} Risk Model
+\end{itemize}
+
+\vfill
+
+The CRM - random $N$
+\begin{itemize}
+\item main focus on claims of a \alert{whole portfolio}
+
+ (whose number is a priori unknown)
+\item $\longrightarrow$ \alert{Collective} Risk Model
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Definition}
+
+In the Collective Risk Model, aggregate losses become
+$$S=X_{1}+\ldots +X_{\alert{N}}=\sum_{i=1}^{\alert{N}}X_{i}.$$
+This is a random sum. We make the following assumptions:
+\begin{itemize}
+\item $N$ is the number of claims
+\item $X_i$ is the amount of the $i$th claim
+\item the $X_i$'s are i.i.d with CDF $F(x)$ and PDF/PMF $f(x)$
+
+\item Moments $E[X^k]=\mu^\prime_k$ (particularly, $E[X]=\mu^\prime$)\footnote{The primes so we can distiguish them from the moments of $S$ i.e. $E[S]=\mu$.}
+
+\item the $X_i$'s and $N$ are mutually independent
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Moments of $S$}
+We have
+$$E[S]=E\left[ E[S|N] \right] = E\left[ N E[X] \right]= E[N]\mu,$$
+and
+\begin{eqnarray*}
+Var(S)&=&E\left[ Var(S|N) \right] + Var\left( E[S|N] \right) \\
+&=& E\left[ N Var(X) \right] + Var(\mu N) \\
+&=& E[N] Var(X) + \mu^2 Var(N) \\
+&=& E[N] (\mu_2^\prime - \mu^2)+ \mu^2 Var(N) \\
+&=&  E[N]\mu_2^\prime + \mu^2 \left\{Var(N)-E[N] \right\}.
+\end{eqnarray*}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{MGF of $S$ as a function of $M_X (t)$ and $M_N (t)$}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{PGF?}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+So in conclusion we have:
+
+\begin{itemize}
+
+\item MGF: $M_N\left(\ln M_X(t)\right)$
+
+\vfill
+
+\item PGF: $P_S (t) = P_N [ P_X (t) ]$
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example}
+\vspace{- 4 cm}
+Assume that $N$ is geometric with probability of success $p$. Find $M_S(t)$ in terms of $M_X(t)$.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Popular options for the distribution of $N$}
+
+\begin{itemize}
+\item Poisson$(\lambda)$%\new{: $\Pr(N=n)=\frac{\lambda^n e^{-\lambda}}{n!}$ $n=0,1,2,\cdots$}
+\begin{itemize}
+\item $E[N]=Var(N)=\lambda$
+\item $S$ is a compound Poisson with parameters $(\lambda,F_X(x))$
+%$$E[S]=\lambda \mu \quad Var(S)=\lambda \mu_2^\prime \quad m_S(t)=e^{\lambda(m_X(t)-1)}$$
+\end{itemize}
+
+\vfill
+
+\item Negative Binomial$(r,\beta)$%\new{: $\Pr(N=n)={r+n-1\choose n} p^r(1-p)^{n} $ $n=0,1,2,\cdots$}
+\begin{itemize}
+\item $E[N]<Var(N)$
+%\item $E[N]\new{=\frac{r(1-p)}p}<Var(N)\new{=\frac{r(1-p)}{p^2}}$
+\item $S$ is a compound Negative Binomial with parameters $(r,\beta,F_X(x))$
+\end{itemize}
+
+\vfill
+
+\item Binomial$(m,q)$%\new{: $\Pr(N=n)={m\choose n} p^n(1-p)^{m-n} $ $n=0,1,2,\cdots$}
+\begin{itemize}
+\item $E[N]>Var(N)$
+%\item $E[N]\new{=mp}>Var(N)\new{=mp(1-p)}$
+\item $S$ is a compound Binomial with parameters $(m,q,F_X(x))$
+\item least popular
+\end{itemize}
+\end{itemize}
+%A summary table is given in [A], Table 12.3.1 on page 376.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Most Important Example!}
+If $N$ is Poisson with intensity $\lambda$, then $S = \sum^N_{i= 1} X_i$ follows a \alert{Compound Poisson Distribution}.
+
+\vfill
+
+\begin{enumerate}
+\item MGF: $$M_S(t)=?$$
+\item PGF: $$P_S(t)=exp \{ \lambda (P_X (t) - 1) \}$$
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{MGF of a compound Poisson}
+
+\vspace{-4 cm} Really comes down to taking the MGF of a Poisson distribution. 
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Quick Aside on PGFs, MGFs, etc}
+
+\begin{itemize}
+
+\item Why is MGF/PGF of compound Poisson so similar? 
+
+\vfill
+ 
+\item Well superficially:
+
+$$ E[t^X] = E[e^{ \log(t) X }], t>0  $$
+
+\vfill
+
+\item Use PGFs for discrete distributions $\rightarrow$ gives a power series and the results therin (e.g. Abel's theorem).
+
+\vfill
+
+\item Use MGFs for continuous $\rightarrow$ gives an integral transform and results from Laplace/Fourier analysis can be used. 
+
+\vfill
+
+\item But as long as everything converges nicely- nothing stopping you from taking MGFs of discrete and vice versa. May not be useful however. 
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cumulants}
+
+\begin{itemize}
+
+\item Define the $k$-th cumulant of the random variable $Y$:
+
+$$\kappa_k=\left. \frac{d^k}{dt^k} \kappa_Y(t) \right|_{t=0} = \left. \frac{d^k}{dt^k} \ln (M_Y(t)) \right|_{t=0}$$
+\vfill
+\item Similar to Moments\footnote{Related to our previous discussion there is also a Cumulant Generating Function $K_Y(t) = \log(M_Y(t))$} but with the key difference that cumulative are related to \textit{Central Moments}!
+\vfill
+\item For example:
+
+\begin{itemize}
+\item Mean: $\kappa_1$
+\item Variance: $\kappa_2$
+\item Skewness ($\gamma_1(Y)$): $\frac{\kappa_3}{\kappa_2^{3/2}}$ 
+\item Kurtosis ($\gamma_2(Y)$): $\frac{\kappa_4}{\kappa_2^{2}}$
+\end{itemize}
+
+\end{itemize}
+
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cumulants of a Compound Poisson}
+
+In the case of a compound Poisson random variable we have
+$$\alert{\kappa_k}=\left. \frac{d^k}{dt^k} \lambda(M_X(t)-1) \right|_{t=0}=\lambda \left.\frac{d^k}{dt^k} M_X(t)\right|_{t=0}=\alert{\lambda \mu^\prime_k}.$$
+Thus
+\begin{eqnarray*}
+E[S]&=&\lambda \mu \quad\text{ and }\quad Var(S)=\lambda \mu^\prime_2 \\
+\gamma_1(S)&=& \frac{\lambda \mu^\prime_3}{(\lambda \mu^\prime_2)^\frac{3}{2}} = \frac{\mu^\prime_3}{\sqrt{\lambda}(\mu^\prime_2)^{3/2}} \\
+\gamma_2(S)&=& \frac{\lambda \mu^\prime_4}{(\lambda \mu^\prime_2)^2} = \frac{\mu^\prime_4}{\lambda (\mu^\prime_2)^2}
+\end{eqnarray*}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A \underline{\textit{Very}} Important Theorem }
+The sum of $m$ independent compound Poisson $(\lambda_i,F_i(x))$ random variables, i.e.,
+$$S = \sum^m_{i=1} S_i, \quad S_i \sim (\lambda_i,F_i(x))$$
+is a compound Poisson random variable again with parameters
+$$\lambda=\sum_{i=1}^m \lambda_i \quad \text{ and }\quad F(x)=\sum_{i=1}^m \frac{\lambda_i}{\lambda}F_i(x).$$
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{So what?}
+
+\begin{itemize}
+\item Independent portfolios of losses can be easily aggregated.
+
+\vfill
+
+\item Total claims paid over $m$ years is compound Poisson, even if the severity and frequency of losses vary across years.
+
+\vfill
+
+\item The time value of money can be approximated by a change of scale on $F_i$ for each year.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Proof}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Distribution of $S$}
+It is possible to get a fairly \alert{general expression for the CDF of $S$} by conditioning on the number of claims:
+
+\vfill
+
+$$F_S(x)=\sum_{n=0}^\infty \Pr[S\le x|N=n]\Pr[N=n]=\alert{\sum_{n=0}^\infty F^{*n}_X(x)p_n},$$
+
+\vfill
+
+where $F^{*n}_X(x)$ is the $n$-fold convolution of $F_X (x)$.
+
+Note that
+\begin{itemize}
+\item $N$ will always be discrete, so this works for any type of RV $X$ (continuous, discrete or mixed)
+\item however, the type of $S$ will depend on the type of $X$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Next Class: end of Module 1 }
+
+
+
+\begin{itemize}
+\item Next class we will discuss various ways to approximate $F_S(x)$.
+\vfill
+\item We will broadly do this is 2 ways:
+\begin{enumerate}
+\item Recursion algorithms
+\item The Central Limit Theorem
+\end{enumerate}
+\vfill
+\item I will also start to post a bank of study questions this week for your Module 1 test in February. 
+
+\end{itemize}
+
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,302 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Module 3: Credibility Theory (cont.)} \\
+    \vspace{1cm}
+    {\large  March 16th, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Story so Far}
+\begin{frame}{Credibility}
+
+\begin{itemize}
+
+\item Last class we discussed how actuaries began to use estimates of the kind:
+
+$$\text{Credibility Premium }=z_{j}\overline{X}_{j}+\left(1-z_{j}\right) \overline{X}$$
+
+In situations (like auto policies) where individual rate setting is hard. 
+
+\vfill
+
+\item We then spoke about how such estimates can be justified through a \emph{Bayesian} framework. Here we could incorporate past experience and expertise into our model. 
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Recall the problem}
+
+Assume:
+\begin{itemize}
+\item every risk $j$ in the collective is characterized by its individual risk profile \alert{$\theta_j \in \Theta$} that does not change over time and that we can't observe.
+\item $\Theta$ may be either qualitative (e.g. good/bad) or quantitative (e.g. average number of accidents per year).
+\item we have $T$ observations $X_{j1},\ldots,X_{jT}$
+\end{itemize}
+We want to estimate
+$$\mu(\theta_j)=E\left[X_{j,T+1}|\theta_j\right]$$
+but $\theta_j$ is unknown to the insurer...
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bayesian Thinking}
+
+
+\begin{itemize}
+
+\item Recall in the Bayesian framework probability represents "belief" in the form of the distribution on $\theta$. Recall Bayes theorem:
+
+$$\pi(\theta | x)= \underbrace{\left[ \frac {f(x\mid \theta )}{f(x)} \right]}_{\text{ the effect of data/evidence }} \times \pi(\theta )$$
+
+\vfill
+
+\item Given some sample x, we \emph{update} our beliefs about $\theta$ and this changes our \emph{Prior} $\pi(\theta)$ into our \emph{Posterior} $\pi(\theta|x)$.
+
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bayesian Thinking}
+
+\begin{itemize}
+
+\item This isn't good enough though, we want to score our errors in some way. Some errors are less significant than others.
+
+\vfill
+
+\item So we make use of a loss function. Given an estimator $\hat{\delta}(x)$ for $\theta$ we want to minimize:
+
+$$\int_\Theta L(\theta,\hat{\delta}(\mathbf{x})) \;\text{d}\Pi(\theta|x).$$
+
+\vfill
+
+\item We showed last class that under a quadratic loss:
+
+$$\widetilde{\delta(\mathbf{x})}= \int \theta d\Pi(\theta|x)=E[\theta|x]$$
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Bayes Premium}
+\begin{frame}{The Bayes Premium}
+
+\begin{itemize}
+
+\item Remember though that we are specifically interested in the \emph{mean} of $X_{j,T+1}$.
+
+\item To that end we we introduce the following. Given $\theta$ the mean of $X$ is given by $\mu(\theta)$ and we use the loss function: 
+
+\begin{equation*}
+L(\theta,\hat{\mu}(\mathbf{x}))=\left( \mu(\theta)-\hat{\mu}(\mathbf{x}) \right)^2
+\end{equation*}
+
+\item From last class we know this will give:
+
+$$P^{Bayes} \equiv \widetilde{\mu(\theta)} = E\left[ \mu(\Theta)|x\right] = \int_\Theta \mu(\theta) \pi(\theta|x) $$
+
+i.e. the expected mean under the posterior!
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Other premiums}
+
+This also gives use the notion of the \alert{collective premium} (a number)
+$$P^{coll}=m=\int_\Theta \mu(\theta) \;\text{d}\pi(\theta) = E[X_{j,T+1}]$$
+
+N.B:
+
+\begin{itemize}
+
+\item without experience/sample  $P^{coll}=P^{Bayes}$. (Think~of~$z_{j}\overline{X}_{j}+\left(1-z_{j}\right) \overline{X}$)
+
+\vfill
+
+\item The quadratic loss of the collective premium is
+
+$$ E\left[\left( m-\mu(\Theta)\right)^2\right]=\underbrace{E\left[Var(\mu(\Theta)|\mathbf{X})\right]}_{\text{Quad. Loss of } P^{Bayes}}+Var\left(E[\mu(\Theta)|\mathbf{X}]\right)$$
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{How to calculate $P^{Bayes}$}
+Raw materials:
+\begin{itemize}
+\item $T$ \alert{realizations $\mathbf{x}$} of $X$
+\item the \alert{distribution of $\mathbf{X}|\Theta$}, $$F_{X|\Theta}(x|\mathbf{\theta})=\Pr[X \le x|\Theta=\mathbf{\theta}]$$
+\item the \alert{\emph{a priori} distribution of $\Theta$}, $$\Pi(\theta)=\Pr[\Theta \le \theta]$$
+\end{itemize}
+Procedure:
+\begin{itemize}
+\item Determine the \emph{a posteriori} distribution $\pi(x|\theta)$
+\item Calculate $P^{Bayes}$ with the help of $\pi(x|\theta)$
+\end{itemize}
+\begin{columns}
+\column{0.9\textwidth}
+%$F_{X|\Theta}(\mathbf{x}|\theta)$ and $\Pi(\theta)$ may be either discrete or continuous, which leads us to consider four cases.
+\column{.1\textwidth}
+\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example 1:Poisson--gamma}
+\vspace{-2.5 cm}
+
+Suppose that given $\Theta=\theta$, past losses $X_1,\cdots,X_T$ are independent and Poisson distributed with Poisson parameter $\theta$ which follows a gamma distribution with probability density function
+$$\pi(\theta)=\frac{\beta^\alpha\theta^{\alpha-1}e^{-\theta\beta}}{\Gamma(\alpha)},\ \ \ \theta>0.$$
+Determine the Bayesian premium.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example 2:Exponential--gamma}
+\vspace{-3 cm}
+
+\begin{align*}
+&f_{X|\Theta}(x|\theta)=\theta e^{-\theta x} \quad\{x>0, \theta>0\} & \text{Exponential}(\theta) \\
+&\pi(\theta)=\frac{\beta^\alpha}{\Gamma(\alpha)}\theta^{\alpha-1}e^{-\beta \theta} \quad\{\alpha,\beta>0,\theta>0\}& \text{gamma}(\alpha,\beta) \\
+\end{align*}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example 3: Bernoulli-Beta}
+\vspace{-3 cm}
+
+\begin{align*}
+f_{X|\Theta}(x|\theta)=\theta^x(1-\theta)^{1-x} \quad\{x=0,1\} & \text{Bernouilli}(\theta) \\
+\pi(\theta)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{\alpha-1}(1-\theta)^{\beta-1} \quad\{0<\theta<1\} & \text{Beta}(\alpha,\beta) \;\{\alpha,\beta>0\}\\
+\end{align*}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Exercise: Geometric--Beta}
+\renewcommand{\arraystretch}{1.5}$
+\begin{array}{ll}
+f_{X|\Theta}(x|\theta)=\theta(1-\theta)^{x} \quad\{x\in\mathbb{N}\} & \text{Geometric}(\theta) \\
+\pi(\theta)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{\alpha-1}(1-\theta)^{\beta-1} \quad\{0<\theta<1\} & \text{Beta}(\alpha,\beta) \;\{\alpha,\beta>0\}\\
+f_X(x)=\frac{\Gamma(\alpha+\beta)\Gamma(\alpha+1)\Gamma(\beta+x)}{\Gamma(\alpha)\Gamma(\beta)\Gamma(\alpha+\beta+x+1)} \quad\{x\in\mathbb{N}\}
+\end{array}$
+%We have
+$$\mu(\theta)=\frac{1-\theta}{\theta} \quad\text{and}\quad m=\frac{\beta}{\alpha-1}.$$
+$\pi_\mathbf{x}(\theta)$ is Beta$(\widetilde{\alpha},\widetilde{\beta})$ with
+$$\widetilde{\alpha}=\alpha + T \quad\text{and}\quad \widetilde{\beta}=\beta + S. $$
+Thus,
+$$P^{Bayes}=\frac{\widetilde{\beta}}{\widetilde{\alpha}-1}=\frac{\beta+S}{\alpha+T-1} =z\bar{X}+(1-z)m \quad\text{with}\quad z=\frac{T}{T+\alpha-1}. $$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Exercise: Normal--Normal}
+\renewcommand{\arraystretch}{1.5}$
+\begin{array}{ll}
+f_{X|\Theta}(x|\theta)=\phi\left(\frac{x-\theta}{\sigma_2}\right) \quad\{-\infty<x,\theta<+\infty,\sigma_2>0\} & \text{Normal}(\theta,\sigma_2^2) \\
+\pi(\theta)=\phi\left(\frac{\theta-m}{\sigma_1}\right) \quad\{-\infty<\theta,m<+\infty,\sigma_1>0\} & \text{Normal}(m,\sigma_1^2) \\
+f_X(x)=\phi\left(\frac{x-m}{\sqrt{\sigma_1^2+\sigma_2^2}}\right) \quad\{-\infty<x<+\infty\} & \!\!\!\!\!\!\!\!\text{Normal}(m,\sigma_1^2+\sigma_2^2)
+\end{array}$
+%We have
+$$\mu(\theta)=\theta \quad\text{and}\quad m=m.$$
+$\pi_\mathbf{x}(\theta)$ is Normal$(\widetilde{m},\widetilde{\sigma}_1^2)$ with
+$$\widetilde{m}=\frac{\sigma_1^2S+\sigma_2^2m}{T\sigma_1^2+\sigma_2^2} \quad\text{and}\quad \widetilde{\sigma}_1^2=\frac{\sigma_1^2\sigma_2^2}{T\sigma_1^2+\sigma_2^2}. $$
+Thus,
+$$P^{Bayes}=\widetilde{m}=\frac{\sigma_1^2S+\sigma_2^2m}{T\sigma_1^2+\sigma_2^2} =z\bar{X}+(1-z)m
+\quad\text{with}\quad z=\frac{T}{T+\sigma_2^2/\sigma_1^2}. $$
+\end{frame}
+\section{A General Model}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A useful result}
+
+For which pairs $f_{X|\Theta}(x|\theta)$ and $\pi(\theta)$ is $P^{Bayes}=\widetilde{\mu(\Theta)}$ linear? Equivalently, when is $\widetilde{\mu(\Theta)}$ of the form
+$$\widetilde{\mu(\Theta)}=z \bar{X} + (1-z)m\;?$$
+\begin{itemize}
+\item It is the case for about half a dozen famous examples.
+\item Jewell (1974) unified these examples
+\item Gerber (1995) proposed an alternative formulation
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A general model}
+Suppose
+\begin{itemize}
+\item $$f_{X|\Theta}(x|\theta)=\frac{a(x)\cdot b(\theta)^x}{c(\theta)},\quad x\in A$$
+where
+$$c(\theta)=\int_A a(x)\cdot b(\theta)^x \text{d}x,$$ and
+\item
+$$\pi(\theta)=\frac{c(\theta)^{-m_0}\cdot b(\theta)^{x_0}\cdot b'(\theta)}{d(m_0,x_0)},$$
+where
+$$d(m_0,x_0)=\int c(\theta)^{-m_0}\cdot b(\theta)^{x_0}\cdot b'(\theta) \text{d}\theta.$$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A general model}
+
+Then \begin{itemize}
+\item
+$\pi_\mathbf{x}(\theta)$ is in the same family of $\pi(\theta)$, with the following updated parameter values (for $m_0$ and $x_0$):
+$$m_0+T \quad\text{and}\quad x_0+\sum_{j=1}^T X_{j}$$
+\item and finally,
+$$P^{Bayes}=\widetilde{\mu(\Theta)}=E[\Theta|X]=\frac{x_0+S+1}{m_0+T}
+=z\bar{X}+(1-z)m$$
+with
+$$z=\frac{T}{m_0+T}.$$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

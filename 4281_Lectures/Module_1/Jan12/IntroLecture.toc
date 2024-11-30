@@ -1,0 +1,6 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Introduction to this course}{3}{0}{1}
+\beamer@sectionintoc {2}{Start of Module 1: Intro to Aggregate Loss Models}{7}{0}{2}
+\beamer@sectionintoc {3}{Generating Functions and Convolutions}{19}{0}{3}
+\beamer@subsectionintoc {3}{1}{Generating Functions}{20}{0}{3}
+\beamer@subsectionintoc {3}{2}{Convolutions}{31}{0}{3}

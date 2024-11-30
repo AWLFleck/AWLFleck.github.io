@@ -1,0 +1,4 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Post Reading Week/test \#1 Review}{3}{0}{1}
+\beamer@sectionintoc {2}{The Lundberg Inequality}{8}{0}{2}
+\beamer@sectionintoc {3}{Proving the Cram\'er-Lundberg Inequality}{14}{0}{3}

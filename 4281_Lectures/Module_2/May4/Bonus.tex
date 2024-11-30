@@ -1,0 +1,381 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage[linewidth=1pt]{mdframed}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Module 2 Bonus: Some other applications of Ruin Theory} \\
+    \vspace{1cm}
+    {\large  March 2, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Review of the It\^{o} calculus}
+\begin{frame}{The building blocks}
+
+Define the Wiener process $W_t$ by:
+
+\begin{itemize}
+\item $W_0= 0$
+
+\item $W_t$ is continuous 
+
+\item $W_t$ has independent increments
+
+\item $W_{t}-W_{s}\sim {\mathcal {N}}(0,t-s)$
+
+\end{itemize}
+
+\vfill
+
+Recall we can recover this as the limit of a random walk as the number of steps goes to infinity. 
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{It\^{o} Integrals}
+
+\begin{itemize}
+
+\item We can then define integrals with respect to $W_t$.
+\vfill
+\item Assume $f_t$ is \emph{adapted to} $W_t$. Fancy way of saying it shares the probability space. 
+\vfill
+\item Take a partition of $[0,t]$ into $n$ intervals denoted $\pi_n$ and:
+
+$$ \int _{0}^{t}f_t\,dW=\lim _{n\rightarrow \infty }\sum _{[t_{i-1},t_{i}]\in \pi _{n}}f_{t_{i-1}}(W_{t_{i}}-W_{t_{i-1}}) $$
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{It\^{o} Processes}
+
+\begin{itemize}
+\item We can then construct \emph{It\^{o} Processes}: 
+
+$$ X_{t}=X_{0}+ \int _{0}^{t}\mu _{s}\,ds + \int _{0}^{t}\sigma _{s}\,dB_{s} $$
+
+\vfill
+
+\item Or in differential form:
+
+$$ dX_{t}=X_{0}+ \mu _{t}dt + \sigma _{t}dB_{t} $$
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Doing Calculus with Random Variables}
+
+\begin{itemize}
+
+\item Given an It\^{o} Process- how does a function of it behave (Real world example: a derivative price as a function of a random stock)
+\vfill
+\item Assume $X_t$ satisfies $ dX_{t}=X_{0}+ \mu _{t}dt + \sigma _{t}dB_{t} $
+\vfill
+\item Assume that $f(t,X)$ is $C^2(\mathbb{R})$ then:
+
+    $$df(X_t)=\left({\frac {\partial f}{\partial t}}+\mu _{t}{\frac {\partial f}{\partial x}}+{\frac {\sigma _{t}^{2}}{2}}{\frac {\partial ^{2}f}{\partial x^{2}}}\right)dt+\sigma _{t}{\frac {\partial f}{\partial x}}\,dB_{t}$$
+\vfill
+
+\item This is the famous It\^{o}'s lemma
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Generators} 
+
+\begin{itemize}
+
+\item Let $\tau$ be a stopping time (recall from our lectures)
+\vfill
+\item We have a nice result called Dynkin's formula:
+
+$$\mathbf{E} [f(X_{\tau})] = f(X_0) + \mathbf{E}^{x} \left[ \int_{0}^{\tau} A f (X_{s}) \, \mathrm{d} s \right] $$
+
+Where $A$ is the \emph{generator of} $X_t$
+\vfill
+\item In previous slide this would mean: 
+
+$$A = {\frac {\partial }{\partial t}}+\mu _{t}{\frac {\partial }{\partial x}}+{\frac {\sigma _{t}^{2}}{2}}{\frac {\partial ^{2}}{\partial x^{2}}} $$
+\vfill
+\item There is a deep link between the algebra of differential operators and stochastic processes. Hence why PDEs are common in finance and insurance. 
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Examples}
+
+\begin{itemize}
+
+\item Brownian Motion with drift: 
+
+$$ dX_t = \mu dt + \sigma dW_t $$
+
+\item Geometric Brownian Motion: 
+
+$$ dX_t = \mu X_t dt + \sigma X_t dW_t $$
+
+\item Ornstein–Uhlenbeck (Mean Reversion) process:
+
+$$ dX_t = -\theta X_t dt + \sigma X_t dW_t $$
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Computing Ruin Probabilities}
+\begin{frame}{ A simple example } 
+
+\begin{itemize}
+
+\item For general processes computing Ruin Probabilities involves the solution to a very complex Partial Integro-Differential Equation (PIDE). But sometimes we can get lucky.
+
+\vfill
+
+\item Consider a simple BM with drift. We start at $A_0$ and have and \emph{additive} wealth dynamic:
+
+\begin{equation}\label{additive}
+dA_t = A_0 + \mu dt + \sigma dW_t 
+\end{equation}
+
+\vfill 
+\item We want to apply out optimal stopping theorem technique we learned so we will construct a martingale by guessing: 
+
+\begin{equation}\label{martingale}
+M_t = e^{ - (\alpha A_t - A_0) }
+\end{equation}
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{ A simple example } 
+\begin{enumerate}
+
+\item[1] First we need to guarantee (\ref{martingale}) is a martingale. Applying It\^{o}'s Lemma: 
+
+\begin{align*}
+dM_t = \left( -\alpha \mu M_t + \alpha^2\frac{ \sigma^2}{2} M_t \right)dt + \left( -\alpha \sigma M_t \right)dW_t
+\end{align*}
+
+\vfill
+
+\item[2] Setting the drift equal to zero gives $\alpha=\frac{2\mu}{\sigma^2}$. This makes $M_t$ a \textit{local martingale} but given the integrability of $M_t$ it is a martingale as well. 
+
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{ A simple example } 
+\begin{enumerate}
+
+\item[3] Define our stopping time as $\tau = \inf\left\lbrace t| M_t>a \text{ or } M_t<b \right\rbrace$. 
+
+\vfill
+
+\item[4] Applying the optimal stopping theorem:
+
+\begin{align*}
+E[M_0] &= E[M_\tau] \\
+1 &= e^{-\alpha (b-A_0)} P( M_\tau = b ) + e^{-\alpha (b-A_0)} (1-P( M_\tau = b )) \\
+P( M_\tau = b ) &= \frac{ e^{ -\alpha A_0 } -  e^{ -\alpha a } }{e^{ -\alpha b } -  e^{ -\alpha a }}
+\end{align*}
+
+\vfill
+
+\item[5] Send $b \rightarrow \infty$ and $a \rightarrow 0$ and we have the ruin probability is $1-e^{-\alpha A_0}$ and the survival probability its $e^{-\alpha A_0}$.
+
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Remarks}
+
+\begin{itemize}
+
+\item So if we maximize $\alpha$ we minimize ruin!
+ 
+
+\vfill
+
+\item Interestingly this can be extended to other processes (using a more complex proof). 
+
+\vfill
+
+\item That is minimizing $\frac{\mu_t}{\sigma_t}$ where $\mu_t$ and $\sigma_t$ are the drift and diffusion parts of the generator $A$ minimizes ruin. A very useful result!
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Remarks}
+
+\begin{itemize}
+
+\item Notice this is a similar result to the Lundberg inequality. In fact it is only the discontinuity of the CL process that prevents an exact match. 
+
+\vfill
+
+\item Not that surprising: If we have probability distributions that are exponentially bounded (Markov inequality) then for some limit we should see exponentially behaved probabilities. 
+
+\vfill
+
+\item What if we don't have this...?
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Investing your insurance float}
+\begin{frame}{Do what?!}
+
+\begin{itemize}
+
+\item Often an insurance company will invest it's premiums. 
+
+\vfill
+
+\item Famous example of this is Warren Buffet. Buffet actually accessed a smaller cost of capital than other investors by investing his insurance companies surplus or "float".
+
+\vfill
+
+\item  There is also something called "convergence capital" where low bond yields are forcing reinsurers to invest their premiums in hedge funds (personally I think this is a bad idea...but no one asked me).
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\begin{itemize}
+
+\item Consider an investor who invests in a risky asset $S_t$ described by a GBM and a bank account $B_t$ with interest rate $r$ i.e:
+
+\begin{equation*}\label{S/B eq}
+dS_t = \mu S_t dt + \sigma S_t dW^{(1)}_t
+\quad\text{and}\quad 
+dB_t = r B_t dt
+\end{equation*}
+
+\item Their wealth $X$ evolves according to the SDE:  
+\vspace{0.1cm}
+\begin{align*}
+X_t &= B_t + \gamma S_t  \\
+dX_t &= r B_t dt + \gamma S_t ( \mu dt + \sigma dW^{(1)}_t)  \\
+dX_t &= \underbrace{ B_t }_{(1-f)X_t} rdt + \underbrace{\gamma S_t}_{ fX } ( \mu dt + \sigma dW^{(1)}_t )  \\
+dX_t &=  X_t [f(\mu-r) + r ]dt + [ X_t f\sigma ]dW^{(1)}_t\label{X dyn}
+\end{align*}
+
+\vfill
+
+\item $f$ is the (potentially dynamic) fraction of total wealth $X_t$ invested in the risky asset.
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Take our model}
+
+\begin{itemize}
+
+\item Take the CL model of net claims we studied in class:
+
+$$ Y_t = ct - \sum_{i=1}^{N(t)}X_i $$
+\vfill
+
+\item Take $a=c - \lambda E[X]$ and $b^2=\lambda E[X^2]$
+\vfill
+
+\item We can approximate $Y_t$ by a BM with drift (more reasonably for some times scales and parameters than others):
+
+$$ Y_t \approx adt + b dW^{(2)}_t $$ 
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Putting it together}
+
+\begin{itemize}
+
+\item If we add the net insurance claims our model for the insurance company now becomes:
+
+$$ dX_t =  X_t [f(\mu-r) + r ]dt + [ X_t f\sigma ]dW^{(1)}_t +  adt + b dW^{(2)}_t $$
+
+\item From the generator of this process we can now get:
+
+\begin{align*}
+\mu_t &= X_t [f(\mu-r) + r ] + a \\
+\sigma_t &= [ X_t f\sigma ]^2 + b^2 + 2\rho b [ X_t f\sigma ]
+\end{align*}
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Putting it together}
+Finding the $f$ that maximizes $\frac{\mu}{\sigma^2}$ gives:
+
+\vfill
+{\small
+$$ f_\psi = \frac{1}{\mu-r}\left[ \sqrt{ \left( rx+a - \frac{\rho b (\mu -r)}{\sigma} \right)^2 + (1-\rho^2)b^2\frac{(\mu-r)^2}{\sigma^2} } - (rx + a) \right] $$
+}
+
+\vfill
+\end{frame}
+
+\section{What is Optimal: Kelly vs Ruin vs ?}
+\begin{frame}{A few Questions}
+
+\begin{itemize}
+
+\item Say $b=\rho=0$ and $a=-c$ i.e. some consumption an investor may need to satisfy. You can show that:
+
+$$f_{\psi}^* = \begin{cases} 
+      \frac{2|rx-c|}{x\sigma^2}\frac{ 1 }{f_{g}^{*}} & rx-c<0 \\
+      0 & rx-c \geq 0
+   \end{cases}$$
+   
+\vfill
+\item Where $f_{g}^{*}$ is the "Kelly" or growth optimal fraction. 
+   
+\vfill
+\item So a Ruin theoretic approach will be much much more conservative...which is correct?
+
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}

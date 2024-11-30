@@ -1,0 +1,376 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage[linewidth=1pt]{mdframed}
+
+%expectations
+\newcommand{\expect}{\mathbb{E}}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    \textbf{\large MATH 4281 Risk Theory--Ruin and Credibility}\\
+    \vspace{1cm}
+    {\large  Summary of Module 2} \\
+    \vspace{1cm}
+    {\large  March 2, 2021}
+    \end{center}
+    \vspace{1cm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivation}
+\begin{frame}{Recall the outline of this course}
+
+Q1: What do you do when $L$ is equal to a sum of smaller RVs? \\
+\color{red}$\Rightarrow$  Module 1: Aggregate Loss Models
+\vfill
+\color{black}Q2: How do you introduce \textbf{time} to this model? \\
+\color{red}$\Rightarrow$  Module 2: Ruin Theory
+\vfill
+
+
+\color{black} Q3: How do I estimate the parameters of the model for $L$...if I don't have a nice heterogeneous sample? \\
+\color{red}$\Rightarrow$  Module 3: Credibility 
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Recall the beginning of this module} 
+
+\begin{itemize}
+
+\item[Q1] What happens if we can't pay all the claims?\\
+\alert{$\Rightarrow$ Ruin}
+\vfill
+
+\item[Q2] How do we set premiums to guarantee that we can? \\
+\alert{$\Rightarrow$ We can't 100\% eliminate ruin but we can add safety loading to at least make it less than sure}
+
+
+\vfill
+
+\item[Q3] How does \alert{Time} factor in to this?\\
+\alert{ In models like the Cram\'er-Lundberg process we can quantify how our premium and (random) loss rates affect ultimate ruin}
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stochastic Processes}
+\begin{frame}{Stochastic Processes}
+
+\begin{mdframed}
+\vspace{-0.6 cm}
+\begin{center}
+$$\text{Randomness} + \text{Time} = \alert{\text{Stochastic Processes}}$$
+\end{center}
+
+\end{mdframed}
+
+\begin{itemize}
+
+\item A \alert{\textit{stochastic process}} is any collection of
+random variables $X\left( t\right) $, $t\in T$. This stochastic process is denoted as
+\begin{equation*}
+\left\{ X\left( t\right) ,t\in T\right\} .
+\end{equation*}
+
+\item In this class we studied 3 kinds of stochastic processes:
+
+\begin{enumerate}
+\item Counting Processes (e.g. Poisson)
+
+\item Compound Poisson Processes (e.g. Aggregate Losses)
+
+\item The Cram\'er-Lundberg Process (Cash + Revenue - Aggregate Losses)
+\end{enumerate}
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Poisson process}
+
+A counting process $\left\{ N\left( t\right) ,t\geq 0\right\} $ is
+a \alert{\textit{Poisson process}} with rate $\lambda $, for $\lambda >0$, if:
+
+\begin{enumerate}
+\item $N\left( 0\right) =0$;
+
+\item it has independent increments; and
+
+\item the number of events in any interval of length $t$ has a Poisson
+distribution with mean $\lambda t$. That is, for all $s,t\geq 0$,$n=0,1,...$%
+\begin{equation*}
+\text{$\Pr $}\left[ N\left( t+s\right) -N\left( s\right) =n\right]
+=e^{-\lambda t}\frac{\left( \lambda t\right) ^{n}}{n!}.
+\end{equation*}%
+\newpage
+\end{enumerate}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Compound Poisson process}
+
+We define a \alert{Compound Poisson process} $\lbrace S(t), t\geq0 \rbrace$ like so:
+$$S(t)=\sum_{i=1}^{N(t)}X_i.$$
+
+Where:
+
+\begin{itemize}
+
+\item $\{N(t)\}$ is a Poisson process with parameter $\lambda$
+
+\item $\{X_i\}$ are iid $\sim P(x)$
+
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{ The Cram\'er-Lundberg process }
+
+Model for the surplus of a non-life insurer at time $t$:
+$$U(t)=\underbrace{u_0+ct}_\text{Revenue} - \underbrace{\sum_{i=1}^{N(t)}X_i}_\text{\alert{Losses}}$$
+where
+\begin{itemize}
+\item $u_0$ initial surplus
+\item $c$ premium rate:
+
+\item $\sum_{i=1}^{N(t)}X_i$ aggregate loss up to time $t$
+\end{itemize}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{ The Cram\'er-Lundberg process }
+
+Furthermore if:
+
+\vfill
+
+\begin{itemize}
+\item the premium rate is $c=(1+\theta)\lambda E[X]$
+
+\vfill
+
+\item where $\theta$ is called the \alert{relative security loading}.
+
+\vfill
+
+
+\item and, $\sum_{i=1}^{N(t)}X_i$ is a Compound Poisson ($X_i$ independent of $N$ Poisson)
+
+\end{itemize}
+
+\vfill
+
+
+$\Longrightarrow$ $\{U(t), t\geq0 \}$ is called the \alert{Cram\'er-Lundberg process}.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Decision Theory and Ruin}
+\begin{frame}
+
+\begin{itemize}
+
+\item We spoke about how there are many different ways to quantify decision making. 
+
+\vfill
+
+\item We spoke about how utility was developed by economists and ruin theory was developed by actuarial science.
+
+\vfill
+
+
+\item The key criteria of ruin theory: we want to minimize the probability that the surplus of an insurance company becomes \alert{negative!}
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The probability of ruin}
+
+\begin{itemize}
+
+\item Recall the Cram\'er-Lundberg model:
+
+$$U(t)= u_0+ct - \sum_{i=1}^{N(t)}X_i$$
+
+\item The time to ruin $T$ is defined as
+$$T=\inf \{ t\ge 0 | U(t)<0\}.$$
+
+\item The probability that the company would be ruined by time $t$ is denoted by
+$$\psi(u_0,t)=\Pr[T<t].$$
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Avoiding Ultimate Ruin}
+
+\begin{itemize}
+
+\item Finally, the probability of \alert{ultimate} ruin is
+$$\psi(u_0) =\Pr(T<\infty)= \lim_{t\rightarrow \infty} \psi(u_0,t) \ge \psi(u,t).$$
+
+\vfill
+
+\item The Net Profit Condition (NPC):
+
+\begin{equation*}\label{Def:NPC}
+c \leq \lambda \expect[X_i] \Rightarrow \psi(u_0)=1
+\end{equation*} 
+\vfill
+\item To ensure the NPC holds we add our "safety loading" : 
+
+\begin{equation*}
+c=(1+\theta)\lambda \expect[X]
+\end{equation*}
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Lundberg Inequality}
+\begin{frame}{How to calculate the probability of ruin}
+
+\begin{itemize}
+
+\item Usually you cannot do so analytically (with exceptions for exponential and mixtures of exponential losses).
+
+\vfill
+
+\item However the \alert{The Lundberg Inequality} provides us with a way of approximating the ruin probability such that we can derive useful qualitative results. 
+
+\vfill
+
+\item It is a meaningful result assuming moments of the severity exist and we are using the Cram\'er-Lundberg model.
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The adjustment coefficient}
+
+In the Cram\'er-Lundberg model, consider the excess of losses over premiums over the interval $[0,t]$: $S(t)-ct.$ We define the \alert{adjustment coefficient $R$} as the first positive solution of the following equation in $r$:
+
+
+$$M_{S(t)-ct}(r)=E\left[ e^{r(S(t)-ct)} \right]=e^{-rct}e^{\lambda t [M_X(r)-1]}=1,$$
+
+\vfill
+
+Recall $c = (1 + \theta) \lambda E[X]$. So, the adjustment coefficient $R$ is the first positive of the following equation:
+
+\begin{eqnarray*}
+1+(1+\theta) rE[X] = M_X(r)
+\end{eqnarray*}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Theorem}
+\begin{enumerate}
+\item Let $R > 0$ be the adjustment coefficient. If $\{U(t)\}$ is a Cram\'er-Lundberg process with $\theta>0$, then for $u\ge 0$
+$$\psi(u)=\frac{e^{-Ru}}{E\left[ e^{-R U(T)} | T<\infty\right]}.$$
+\item Since $U(T)<0$, we have then (Lundberg's exponential upper bound)
+$$\psi(u)< e^{-Ru}.$$
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{An example-why is this bound useful?}
+\vspace{- 3cm}
+\footnote{Kaas 4.3 \#8}In some ruin process, the individual claims have a gamma(2, 1) distribution. Determine the
+loading factor $\ell$ as a function of the adjustment coefficient $R$. Also, determine $R( \ell )$. Using a sketch of the graph of the mgf of
+the claims, discuss the behaviour of $R$ as a function of $\ell$ .
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{An example}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Optimal Reinsurance}
+\begin{frame}{Assumptions}
+
+\begin{itemize}
+
+\item Let $0\le h(x) \le x$ be the amount paid by the reinsurer for a claim with amount $x$ i.e:
+
+\begin{itemize}
+\item $h(X)=(1-\alpha)X$ for proportional reinsurance.
+
+\item $h(X)=(X-d)_+$ for excess of loss reinsurance.
+\end{itemize}
+
+\vfill
+
+\item Reinsurance is non cheap and that the loading on reinsurance premiums is $\xi>\theta > 0$. So the reinsurance premium say $c_{h}$ is:
+
+$$c_h=(1+\xi)\lambda E[h(X)]$$
+
+
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Assumptions}
+
+\begin{itemize}
+
+\item With reinsurance, the Cram\'er-Lundberg process  becomes
+$$U(t)=u+(c-c_h)t-\sum_{i=1}^{N(t)} (X_i-h(X_i)).$$
+
+\vfill
+
+\item With
+reinsurance, the adjustment coefficient, $R_{h}$, is then the non-trivial
+solution to
+$$\lambda \left[ m_{X-h(X)}(r)-1\right]=(c-c_h)r.$$
+Equivalently,
+$$\lambda +\left( c-c_{h}\right) r=\lambda \int_{0}^{\infty }e^{r\left[x-h\left( x\right) \right] }p\left( x\right) dx.$$
+
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A Theorem}
+If
+\begin{itemize}
+\item We are in a Cram\'er-Lundberg setting
+\item We are considering two reinsurance treaties, one of which is excess of loss
+\item Both treaties have same expected payments and same premium loadings
+\end{itemize}
+then
+\begin{itemize}
+\item The adjustment coefficient with the excess of loss treaty will always be \alert{at least as good (high) as with any other type of reinsurance treaty}
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
