@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Andrew Fleck</title>
-    <link>http://localhost:1313/</link>
+    <link>https://awlfleck.github.io/</link>
     <description>Recent content on Andrew Fleck</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 12 Oct 2022 11:53:08 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://awlfleck.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
-      <link>http://localhost:1313/about/</link>
+      <link>https://awlfleck.github.io/about/</link>
       <pubDate>Wed, 12 Oct 2022 11:53:08 -0400</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;!---so strange, see https://discourse.gohugo.io/t/link-to-static-file/78 different from unix...--&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-short-version&#34;&gt;&#xA;  The Short Version:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#the-short-version&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;By training, I am an applied mathematician. &lt;a href=&#34;http://localhost:1313/AWF_CV_Long.pdf&#34; &gt;My Resume&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-long-version&#34;&gt;&#xA;  The Long Version:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#the-long-version&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Encouraged by one too many pop science books or documentaries I did an undergrad in math and physics. The plan (if you could call it that) was to:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;1. Become a theoretical physicist.&#xA;2. ???&#xA;3. Save the world with my brilliance ...somehow. &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;But the truth of the matter quickly set in.&lt;/p&gt;</description>
+      <guid>https://awlfleck.github.io/about/</guid>
+      <description>&lt;!---so strange, see https://discourse.gohugo.io/t/link-to-static-file/78 different from unix...--&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-short-version&#34;&gt;&#xA;  The Short Version:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#the-short-version&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;By training, I am an applied mathematician. &lt;a href=&#34;https://awlfleck.github.io/AWF_CV_Long.pdf&#34; &gt;My Resume&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-long-version&#34;&gt;&#xA;  The Long Version:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#the-long-version&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Encouraged by one too many pop science books or documentaries I did an undergrad in math and physics. The plan (if you could call it that) was to:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;1. Become a theoretical physicist.&#xA;2. ???&#xA;3. Save the world with my brilliance ...somehow. &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;But the truth of the matter quickly set in.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Placeholder Text</title>
-      <link>http://localhost:1313/posts/placeholder-text/</link>
+      <link>https://awlfleck.github.io/posts/placeholder-text/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/placeholder-text/</guid>
+      <guid>https://awlfleck.github.io/posts/placeholder-text/</guid>
       <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Math Typesetting</title>
-      <link>http://localhost:1313/posts/math-typesetting/</link>
+      <link>https://awlfleck.github.io/posts/math-typesetting/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/math-typesetting/</guid>
+      <guid>https://awlfleck.github.io/posts/math-typesetting/</guid>
       <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
     </item>
     <item>
       <title>External Page: Hugo Coder Wiki</title>
-      <link>http://localhost:1313/posts/hugo-coder-wiki/</link>
+      <link>https://awlfleck.github.io/posts/hugo-coder-wiki/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/hugo-coder-wiki/</guid>
+      <guid>https://awlfleck.github.io/posts/hugo-coder-wiki/</guid>
       <description></description>
     </item>
     <item>
       <title>Contact</title>
-      <link>http://localhost:1313/contact/</link>
+      <link>https://awlfleck.github.io/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/contact/</guid>
+      <guid>https://awlfleck.github.io/contact/</guid>
       <description>&lt;p&gt;Feel free to message me on LinkedIn alternatively you can contact me here:&lt;/p&gt;&#xA;&lt;form action=&#34;https://docs.google.com/forms/d/e/1FAIpQLSdXaEE9niajKCvI9m0VRj07sdjd_n5oOBURD2GSk-65y1woQw/formResponse&#34; method=&#34;post&#34; target=&#34;hidden_iframe&#34; onsubmit=&#34;submitted=true&#34;&gt;&#xA;&lt;p&gt;&lt;label&gt;Your e-mail:&lt;/label&gt;&#xA;&lt;input type=&#34;email&#34; placeholder=&#34;Email address*&#34; class=&#34;form-input&#34; name=&#34;entry.261236222&#34; required&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;label&gt;Message:&lt;/label&gt;&#xA;&lt;textarea rows=&#34;5&#34; cols=&#34;50&#34; placeholder=&#34;Message&#34; class=&#34;form-input&#34; name=&#34;entry.2054609479&#34; required&gt;&lt;/textarea&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;button type=&#34;submit&#34;&gt;Send&lt;/button&gt;&lt;/p&gt;&#xA;&lt;/form&gt; &#xA;&lt;p&gt;If all else fails, promise to provide free (Québécois) maple syrup in Midtown Manhattan and I&amp;rsquo;ll be sure to arrive.&lt;/p&gt;&#xA;&lt;!-- added config to toml to render HTML could have added shortcode instead&#xA;&#x9;https://blog.puvvadi.me/posts/add-contact-form-hugo-google-forms/&#xA;&#x9;https://anaulin.org/blog/hugo-raw-html-shortcode/ (didn&#39;t do this)&#xA;&#x9;https://stackoverflow.com/questions/70625593/how-to-center-an-image-using-blogdown (did this)&#xA;--&gt;</description>
     </item>
     <item>
       <title>Projects</title>
-      <link>http://localhost:1313/projects/</link>
+      <link>https://awlfleck.github.io/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/</guid>
+      <guid>https://awlfleck.github.io/projects/</guid>
       <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;estimation-and-management-of-stable-distributed-risk&#34;&gt;&#xA;  Estimation and Management of Stable-distributed Risk:&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#estimation-and-management-of-stable-distributed-risk&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The lion&amp;rsquo;s share of my PhD research was concerned with how to model, estimate and manage risk modeled by &lt;a href=&#34;https://en.wikipedia.org/wiki/Stable_distribution&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stable distributions&lt;/a&gt;. I was particularly concerned with the case of jointly distributed idiosyncratic and systematic risk (think the CAPM or delta hedging). Stables as a family of distributions are quite beautiful and elegant and have many desirable properties for risk modeling but they lack closed form pdfs and can be challenging to handle computationally. My goal in these papers was to bridge the gap between theory and application.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Teaching Experience</title>
-      <link>http://localhost:1313/teaching_exp/</link>
+      <link>https://awlfleck.github.io/teaching_exp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/teaching_exp/</guid>
+      <guid>https://awlfleck.github.io/teaching_exp/</guid>
       <description>&lt;p&gt;In a previous life&lt;!--(Winters &#39;21 &amp; &#39;23)--&gt; I was the course director and instructor respectively at York University for:&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;math-4281-ruin-theory-and-credibility&#34;&gt;&#xA;  Math 4281: Ruin Theory and Credibility&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#math-4281-ruin-theory-and-credibility&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;This was a 4th year undergraduate class for actuarial science students and was considered adequate preparation for exam C of the Society of Actuaries (SOA). My understanding is that the ruin theory component has be phased out, which is unfortunate given how foundational is is.&lt;/p&gt;</description>
     </item>
   </channel>
